@@ -5,31 +5,27 @@ Web de venta online
 <p>Entidades:</p>
 
 <ul>
-  <li>Administrador</li>
-  <li>Cliente</li>
+  <li>Administrador: usuario que se encargará de insertar dentro de la web y/o en el catálogo los distintos productos a ofertar.</li>
+  <li>Cliente: usuario que comprará en la web. </li>
     <ul>
       <li>Cliente registrado</li>
       <li>Cliente invitado (No definitivo)</li>
   </ul>
  
-  <li>Carro de compra</li>
-  <li>Catalogo</li>
-  <li>Producto</li>
-  <li>Stock</li>
-  <li>Pedido</li>
+  <li>Carro de compra: destino de los productos elegidos por el cliente para ser comprados.</li>
+  <li>Producto: objeto ofertado en la web y/o en el catálogo.</li>
+  <li>Stock: lista que contendrá todos los productos a la venta de la web con su correspondiente cantidad en cada uno de los mismos. </li>
+  <li>Pedido: lista de productos comprados por el cliente.</li>
 </ul>
-
-<dl>
-  <dt>Usuario</dt>
-
-  <dd>Nombre</dd>
-  <dd>ID_Cliente</dd>
-  <dd>Contraseña</dd>
-</dl>
-
-<dl>
-  <dt>Carro de compra</dt>
+<h1>Funcionalidad interna</h1>
+<p>
+  Los administradores tendrán la posibilidad de actualizar el catálogo, incrementar el stock de un producto y añadir diferentes categorías
+  de productos, asi como actualizar las categorías de los distintos productos ofertados ya en la web.
+ </p>
   
-  <dd>Usuario</dd>
-  <dd>#hola</dd>
-</dl>
+  <h1>Integrantes             Correo            Cuenta GitHub</h1>
+  <ul> 
+  <li> Antonio Martín Córdoba   (a.martinc.2018@alumnos.urjc.es) URJCAntonio</li>
+  <li> Ismael Martínez Del Fresno (i.martinezd.2018@alumnos.urjc.es)  Ismael-Martínez-Del-Fresno</li>
+  </ul>
+  
