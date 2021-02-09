@@ -33,12 +33,3 @@ Web de venta online
   <dd>Usuario</dd>
   <dd></dd>
 </dl>
-
-<p>Funcionalidades</p>
-<ul>
-  
-  <li>Y este es otro diferente.</li>
-  <li>Y este es otro diferente.</li>
-  <li>Y este es otro diferente.</li>
-
-</ul>
