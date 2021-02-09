@@ -31,5 +31,5 @@ Web de venta online
   <dt>Carro de compra</dt>
   
   <dd>Usuario</dd>
-  <dd></dd>
+  <dd>#hola</dd>
 </dl>
