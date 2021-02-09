@@ -23,7 +23,7 @@ Web de venta online
   de productos, asi como actualizar las categorías de los distintos productos ofertados ya en la web.
  </p>
   
-  <h1>Integrantes             Correo            Cuenta GitHub</h1>
+  <h1>Integrantes                         (Correo)                               Cuenta GitHub</h1>
   <ul> 
   <li> Antonio Martín Córdoba   (a.martinc.2018@alumnos.urjc.es) URJCAntonio</li>
   <li> Ismael Martínez Del Fresno (i.martinezd.2018@alumnos.urjc.es)  Ismael-Martínez-Del-Fresno</li>
