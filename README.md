@@ -19,7 +19,7 @@ Web de venta online
 </ul>
 <h1>Funcionalidad interna</h1>
 <p>
- Se utilizarán distintas bases de datos (con lenguaje SQL) para poder almacenar los distintos productos así como los usuarios que están registrados en la web (con sus correspondientes campos respectivos). 
+ Se utilizarán distintas bases de datos (con lenguaje SQL) para poder almacenar los distintos productos así como los usuarios que están registrados en la web (con sus correspondientes campos respectivos). Además, el cliente podrá tener ofertas para los productos, que podrá ser un cupón o un código de descuento, ambas manejadas internamente con el fin de verificar dicha oferta que posee el cliente. 
  </p>
   
   <h1>Integrantes  (Correo)       Cuenta GitHub</h1>
