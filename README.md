@@ -19,8 +19,7 @@ Web de venta online
 </ul>
 <h1>Funcionalidad interna</h1>
 <p>
-  Los administradores tendrán la posibilidad de actualizar el catálogo, incrementar el stock de un producto y añadir diferentes categorías
-  de productos, asi como actualizar las categorías de los distintos productos ofertados ya en la web.
+ Se utilizarán distintas bases de datos (con lenguaje SQL) para poder almacenar los distintos productos así como los usuarios que están registrados en la web (con sus correspondientes campos respectivos). 
  </p>
   
   <h1>Integrantes  (Correo)       Cuenta GitHub</h1>
