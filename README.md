@@ -17,9 +17,9 @@ Web de venta online
   <li>Stock: lista que contendrá todos los productos a la venta de la web con su correspondiente cantidad en cada uno de los mismos. </li>
   <li>Pedido: lista de productos comprados por el cliente.</li>
 </ul>
-<h1>Funcionalidad interna</h1>
+<h1>Servicio interno</h1>
 <p>
- Se utilizarán distintas bases de datos (con lenguaje SQL) para poder almacenar los distintos productos así como los usuarios que están registrados en la web (con sus correspondientes campos respectivos). Además, el cliente podrá tener ofertas para los productos, que podrá ser un cupón o un código de descuento, ambas manejadas internamente con el fin de verificar dicha oferta que posee el cliente. 
+  Queremos ser capaces de generar un cupón tras la compra en la página web, para ofrecer descuentos en la proxima compra. El cupón podría tener alguna clase de código QR para escanear.
  </p>
   
   <h1>Integrantes  (Correo)       Cuenta GitHub</h1>
