@@ -19,7 +19,7 @@ Web de venta online
 </ul>
 <h1>Servicio interno</h1>
 <p>
-  Queremos ser capaces de generar un cupón tras la compra en la página web, para ofrecer descuentos en la proxima compra. El cupón podría tener alguna clase de código QR para escanear. También se podrá canjear el cupón con un código alfanumérico (por si el dispositivo desde el que se compra no tiene cámara incorporada). Al aplicar dicho descuento, generaremos un pedido nuevo que contendrá los mismos objetos del pedido anterior pero ahora incluyendo el descuento aplicado (si es que alguno de los prodcutos elegidos anteriormente es afectado por el descuento).
+  Queremos ser capaces de generar un cupón tras la compra en la página web, para ofrecer descuentos en la proxima compra. El cupón podría tener alguna clase de código QR para escanear. También se podrá canjear el cupón con un código alfanumérico (por si el dispositivo desde el que se compra no tiene cámara incorporada). Al aplicar dicho descuento, generaremos un pedido nuevo que contendrá los mismos objetos del pedido anterior pero ahora incluyendo el descuento aplicado (si es que alguno de los productos elegidos anteriormente es afectado por el descuento).
  </p>
   
   <h1>Integrantes  (Correo)       Cuenta GitHub</h1>
