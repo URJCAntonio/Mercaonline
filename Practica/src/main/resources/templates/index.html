@@ -4,21 +4,21 @@
 
 	</head>
 	<body>
-	{{#productos}}
+	{{#producto}}
 		<div class="Escaparate" tag=" "> 
 			<div class= "Producto">
-				<h1>{{productos.nombre}}</h1>
-				<br><a href="producto/{{-index}}">{{productos.nombre}}</a>
+				
+				<br><h1><a href="/{{-index}}">{{nombre}} {{id}}</a> </h1>
 				<br>
-				<a href="producto/{{-index}}"><img src="https://cdn.discordapp.com/attachments/752885933401047142/813481418431791159/latest.png"></a>
+				<a href="producto/{{-index}}"><img src="https://cdn.discordapp.com/attachments/752885933401047142/813815861089009694/450_1000.png"></a>
 				<br> 
 			</div>
 		</div>
-		{{/productos}}
+	{{/producto}}
 			
-		{{^productos}}
-		<p> No hay productos anunciados. Vuelva en otro momento.</p>
-		{{/productos}}
+	{{^producto}}
+	<p> No hay productos anunciados. Vuelva en otro momento.</p>
+	{{/producto}}
 		
 		<br>
 		

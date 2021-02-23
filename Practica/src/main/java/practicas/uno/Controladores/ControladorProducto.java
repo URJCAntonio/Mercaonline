@@ -1,4 +1,5 @@
-package practicas.uno;
+package practicas.uno.Controladores;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,28 +9,32 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import practicas.uno.Entidades.Producto;
+
+
 
 @Controller
-public class Controlador {
+public class ControladorProducto {
 
 	
-	private List<Productos> productos= new ArrayList<>();
+	private List<Producto> producto= new ArrayList<>();
 
-	public Controlador() {
-		productos.add(new Productos(1,25.50,"Estuche"));
-		productos.add(new Productos(2,2.25,"Tippex"));
-		productos.add(new Productos(3,10.80,"Calculadora"));
+	public ControladorProducto() {
+		producto.add(new Producto(1,25.50,"Estuche"));
+		producto.add(new Producto(2,2.25,"Tippex"));
+		producto.add(new Producto(3,10.80,"Calculadora"));
 	}
 	
 	@GetMapping("/")
 	public String obtenerProductos(Model m) {
-		m.addAttribute("productos", this.productos);
+		m.addAttribute("producto", this.producto);
 		
 		return "index";
 	}
+	
 	@GetMapping("/post/{numPost}")
 	public String enseñarProducto(Model model, @PathVariable int idProducto) {
-		Productos producto= productos.get(idProducto-1);
+		Producto producto= this.producto.get(idProducto-1);
 		
 		model.addAttribute("post", producto);
 		model.addAttribute("numPost", idProducto);
