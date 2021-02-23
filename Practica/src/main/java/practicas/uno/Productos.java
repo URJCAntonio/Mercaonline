@@ -5,13 +5,13 @@ public class Productos {
 	private int id;
 	private double precio;
 	private String nombre;
-	private String url= "https://cdn.discordapp.com/attachments/752885933401047142/813481418431791159/latest.png";
-	public Productos(int id, double precio, String nombre, String url) {
+	
+	public Productos(int id, double precio, String nombre) {
 		super();
 		this.id = id;
 		this.precio = precio;
 		this.nombre = nombre;
-		this.url= url;
+		
 	}
 	public int getId() {
 		return id;

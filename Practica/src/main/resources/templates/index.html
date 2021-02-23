@@ -4,18 +4,23 @@
 
 	</head>
 	<body>
+	{{#productos}}
 		<div class="Escaparate" tag=" "> 
-			{{#productos}}
 			<div class= "Producto">
 				<h1>{{productos.nombre}}</h1>
-				<img src="https://cdn.discordapp.com/attachments/752885933401047142/813481418431791159/latest.png"> 
+				<br><a href="producto/{{-index}}">{{productos.nombre}}</a>
+				<br>
+				<a href="producto/{{-index}}"><img src="https://cdn.discordapp.com/attachments/752885933401047142/813481418431791159/latest.png"></a>
+				<br> 
 			</div>
-			{{/productos}}
-			
-			{{^productos}}
-			<p> No hay producotos anunciados </p>
-			{{/productos}}
 		</div>
+		{{/productos}}
+			
+		{{^productos}}
+		<p> No hay productos anunciados. Vuelva en otro momento.</p>
+		{{/productos}}
+		
+		<br>
 		
 
 	</body>
