@@ -14,7 +14,7 @@ public class Producto {
 	
 	private double precio;
 	private String nombre;
-	
+	 
 	
 	public Producto( int id, double precio, String nombre) {
 		this.id=id;
