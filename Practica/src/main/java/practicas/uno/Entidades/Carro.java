@@ -1,39 +1,44 @@
 package practicas.uno.Entidades;
 
-import javax.persistence.Column;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Producto {
+public class Carro {
+
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private long idProducto;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private long idCarro;
 	
-	
-	@Column
+	private long numProductos;
 	private double precio;
 	
-	@Column
-	private String nombre;
-	 
 	
-	public Producto() {
 	
-	}
-	public Producto(double precio, String nombre) {
-		
+	public Carro(long id, long numProductos, long precio) {
+		super();
+		this.idCarro = id;
+		this.numProductos = numProductos;
 		this.precio = precio;
-		this.nombre = nombre;
+
 	}
+	
 	public long getId() {
-		return idProducto;
+		return idCarro;
 	}
 	public void setId(long id) {
-		this.idProducto = id;
+		this.idCarro = id;
+	}
+	public long getNumProductos() {
+		return numProductos;
+	}
+	public void setNumProductos(long numProductos) {
+		this.numProductos = numProductos;
 	}
 	public double getPrecio() {
 		return precio;
@@ -41,21 +46,17 @@ public class Producto {
 	public void setPrecio(double precio) {
 		this.precio = precio;
 	}
-	public String getNombre() {
-		return nombre;
-	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+	
 	@Override
 	public String toString() {
-		return "Producto [idProducto=" + idProducto + ", precio=" + precio + ", nombre=" + nombre + "]";
+		return "Carro [idCarro=" + idCarro + ", numProductos=" + numProductos + ", precio=" + precio + "]";
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (int) (idProducto ^ (idProducto >>> 32));
+		result = prime * result + (int) (idCarro ^ (idCarro >>> 32));
 		return result;
 	}
 	@Override
@@ -66,11 +67,13 @@ public class Producto {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Producto other = (Producto) obj;
-		if (idProducto != other.idProducto)
+		Carro other = (Carro) obj;
+		if (idCarro != other.idCarro)
 			return false;
 		return true;
 	}
+	
+	
 	
 	
 }

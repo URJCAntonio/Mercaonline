@@ -7,39 +7,33 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Producto {
-	
+public class Cliente {
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private long idProducto;
-	
-	
-	@Column
-	private double precio;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private long idCliente;
 	
 	@Column
 	private String nombre;
-	 
 	
-	public Producto() {
+	@Column(unique=true)
+	private String email;
 	
+	
+	
+	public Cliente() {
+		super();
 	}
-	public Producto(double precio, String nombre) {
-		
-		this.precio = precio;
+	public Cliente(String nombre, String email) {
+		super();
 		this.nombre = nombre;
+		this.email = email;
 	}
 	public long getId() {
-		return idProducto;
+		return idCliente;
 	}
 	public void setId(long id) {
-		this.idProducto = id;
-	}
-	public double getPrecio() {
-		return precio;
-	}
-	public void setPrecio(double precio) {
-		this.precio = precio;
+		this.idCliente = id;
 	}
 	public String getNombre() {
 		return nombre;
@@ -47,15 +41,24 @@ public class Producto {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	
 	@Override
 	public String toString() {
-		return "Producto [idProducto=" + idProducto + ", precio=" + precio + ", nombre=" + nombre + "]";
+		return "Cliente [idCliente=" + idCliente + ", nombre=" + nombre + ", email=" + email + "]";
 	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (int) (idProducto ^ (idProducto >>> 32));
+		result = prime * result + (int) (idCliente ^ (idCliente >>> 32));
 		return result;
 	}
 	@Override
@@ -66,11 +69,14 @@ public class Producto {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Producto other = (Producto) obj;
-		if (idProducto != other.idProducto)
+		Cliente other = (Cliente) obj;
+		if (idCliente != other.idCliente)
 			return false;
 		return true;
 	}
+	
+	
+	
 	
 	
 }
