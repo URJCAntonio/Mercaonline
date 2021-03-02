@@ -20,14 +20,21 @@ public class Producto {
 	@Column
 	private String nombre;
 	 
+	@Column
+	private String descripcion;
+	
+	@Column
+	private String url;
 	
 	public Producto() {
 	
 	}
-	public Producto(double precio, String nombre) {
+	public Producto(double precio, String nombre, String descripcion, String url) {
 		
 		this.precio = precio;
 		this.nombre = nombre;
+		this.descripcion=descripcion;
+		this.url=url;
 	}
 	public long getId() {
 		return idProducto;
@@ -46,6 +53,19 @@ public class Producto {
 	}
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+	
+	public String getDescripcion() {
+		return descripcion;
+	}
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+	public String getUrl() {
+		return url;
+	}
+	public void setUrl(String url) {
+		this.url = url;
 	}
 	@Override
 	public String toString() {

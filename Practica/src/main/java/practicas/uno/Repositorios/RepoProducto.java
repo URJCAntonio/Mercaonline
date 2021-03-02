@@ -12,5 +12,4 @@ public interface RepoProducto extends JpaRepository<Producto, Long> {
 	
 	List<Producto> findByPrecio(double precio);
 	
-	
 }

@@ -16,17 +16,20 @@ public class Cliente {
 	@Column
 	private String nombre;
 	
+	@Column
+	private String password;
+	
 	@Column(unique=true)
 	private String email;
-	
 	
 	
 	public Cliente() {
 		super();
 	}
-	public Cliente(String nombre, String email) {
+	public Cliente(String nombre, String password, String email) {
 		super();
 		this.nombre = nombre;
+		this.password=password;
 		this.email = email;
 	}
 	public long getId() {
@@ -49,7 +52,12 @@ public class Cliente {
 		this.email = email;
 	}
 	
-	
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	@Override
 	public String toString() {
 		return "Cliente [idCliente=" + idCliente + ", nombre=" + nombre + ", email=" + email + "]";

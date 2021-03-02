@@ -1,0 +1,25 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<style>
+			
+			img{
+				width: 350px;
+   				height: 350px;
+			}
+			
+		</style>
+	</head>
+	<body>
+			<h1> {{miproducto.nombre}} </h1>
+			<img src={{miproducto.url}}>
+			<p> {{miproducto.descripcion}} </p>
+		<br>
+	<a href="/producto/addCarro">Añadir producto al carro de compra. </a>
+	<br>
+	<a href="/producto/{{idProducto}}/delete">Eliminar producto. </a> 
+	<br>
+	<a href="/tienda">Volver a la tienda. </a>
+	</body>
+	
+</html>
