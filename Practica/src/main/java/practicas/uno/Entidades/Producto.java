@@ -1,10 +1,12 @@
 package practicas.uno.Entidades;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Producto {
@@ -26,6 +28,9 @@ public class Producto {
 	@Column
 	private String url;
 	
+	@OneToOne(cascade=CascadeType.ALL)
+	private Stock stock;
+	
 	public Producto() {
 	
 	}
@@ -35,6 +40,13 @@ public class Producto {
 		this.nombre = nombre;
 		this.descripcion=descripcion;
 		this.url=url;
+
+	}
+	public Stock getStock() {
+		return stock;
+	}
+	public void setStock(Stock stock) {
+		this.stock = stock;
 	}
 	public long getId() {
 		return idProducto;

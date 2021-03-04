@@ -1,46 +1,73 @@
 package practicas.uno.Entidades;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
 
 @Entity
 public class Stock {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long idProducto;
+	private long idStock;
 	
-	private long unidades;
+	@Column
+	private long unidadesPorProducto;
+	
+	@OneToOne(mappedBy="stock")
+	private Producto productos;
+	
 
-	public Stock(long idPedido, long unidades) {
-		super();
-		this.idProducto = idPedido;
-		this.unidades = unidades;
+	public Stock() {
+		
 	}
 
-	public long getIdPedido() {
-		return idProducto;
+	public Stock(long unidades) {
+	
+		this.unidadesPorProducto = unidades;
+
 	}
 
-	public void setIdPedido(long idPedido) {
-		this.idProducto = idPedido;
+	public long getIdStock() {
+		return idStock;
 	}
 
-	public long getUnidades() {
-		return unidades;
+	public void setIdStock(long idStock) {
+		this.idStock = idStock;
 	}
 
-	public void setUnidades(long unidades) {
-		this.unidades = unidades;
+	public long getUnidadesPorProducto() {
+		return unidadesPorProducto;
 	}
+
+	public void setUnidadesPorProducto(long unidadesPorProducto) {
+		this.unidadesPorProducto = unidadesPorProducto;
+	}
+
+
+	public Producto getProductos() {
+		return productos;
+	}
+
+	public void setProductos(Producto productos) {
+		this.productos = productos;
+	}
+
+
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (int) (idProducto ^ (idProducto >>> 32));
+		result = prime * result + (int) (idStock ^ (idStock >>> 32));
 		return result;
 	}
 
@@ -53,7 +80,7 @@ public class Stock {
 		if (getClass() != obj.getClass())
 			return false;
 		Stock other = (Stock) obj;
-		if (idProducto != other.idProducto)
+		if (idStock != other.idStock)
 			return false;
 		return true;
 	}

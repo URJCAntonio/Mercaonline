@@ -2,6 +2,7 @@ package practicas.uno.Entidades;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,13 +16,12 @@ public class Pedido {
 	private long idPedido;
 	private long idCliente;
 	
-	
+	@Column
 	private long numProductos;
 	
 	
-	
 	public Pedido(long idPedido, long idCliente, long numProductos) {
-		super();
+	
 		this.idPedido = idPedido;
 		this.idCliente = idCliente;
 		this.numProductos = numProductos;

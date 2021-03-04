@@ -2,10 +2,14 @@ package practicas.uno.Entidades;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Carro {
@@ -15,13 +19,22 @@ public class Carro {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long idCarro;
 	
+	@Column
 	private long numProductos;
+	
+	@Column
 	private double precio;
 	
+	//@OneToOne(mappedBy="carro")
+	//private Cliente cliente;
+	
+	/*@OneToMany
+	private List<Producto> productos;
+	*/
 	
 	
 	public Carro(long id, long numProductos, long precio) {
-		super();
+
 		this.idCarro = id;
 		this.numProductos = numProductos;
 		this.precio = precio;

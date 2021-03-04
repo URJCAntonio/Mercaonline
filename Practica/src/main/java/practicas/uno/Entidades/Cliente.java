@@ -1,10 +1,12 @@
 package practicas.uno.Entidades;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Cliente {
@@ -22,12 +24,14 @@ public class Cliente {
 	@Column(unique=true)
 	private String email;
 	
+	//@OneToOne(cascade=CascadeType.ALL)
+	//private Carro carro;
 	
 	public Cliente() {
-		super();
+		
 	}
 	public Cliente(String nombre, String password, String email) {
-		super();
+	
 		this.nombre = nombre;
 		this.password=password;
 		this.email = email;

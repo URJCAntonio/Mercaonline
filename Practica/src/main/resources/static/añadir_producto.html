@@ -4,17 +4,19 @@
 	</head>
 
 	<body>
-	<form action="/producto/add" method="POST">
-	<p> Nombre del producto: </p>
-	<input type="text" name="nombre"/>
-	<p> Descripción: </p>
-	<textarea name="descripcion" rows=5 cols=50></textarea>
-	<p> Imagen del producto (URL): </p>
-	<input type="text" name="url"/>
-	<p> Precio del producto: </p>
-	<input type="number" step="0.01" name="precio"/>
-	<br>
-	<input type="submit" value="Añadir producto"/>
+		<form action="/producto/add" method="POST">
+		<p> Nombre del producto: </p>
+		<input type="text" name="nombre"/>
+		<p> Descripción: </p>
+		<textarea name="descripcion" rows=5 cols=50></textarea>
+		<p> Imagen del producto (URL): </p>
+		<input type="text" name="url"/>
+		<p> Precio del producto: </p>
+		<input type="number" step="0.01" name="precio"/>
+		<p> Número de unidades: </p>
+		<input type="number" name="unidades"/>
+		<input type="submit" value="Añadir producto"/>
+		</form>
 	</body>
 
 </html>
