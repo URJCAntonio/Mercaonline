@@ -28,3 +28,33 @@ Web de venta online
   <li> Ismael Martínez Del Fresno (i.martinezd.2018@alumnos.urjc.es)  Ismael-Martínez-Del-Fresno</li>
   </ul>
   
+<h1> Fase 2 </h2>
+<br>  
+  <h2>Pantallas realizadas y su correspondiente explicación </h2>
+<br>
+  <img src="https://cdn.discordapp.com/attachments/522438377165815808/818082449400791060/unknown.png">
+  <p> Esta pantalla corresponde a la primera pantalla que vemos al ejecutar nuestra aplicacion en local. Desde aqui, podremos registrarnos en la web (aunque todavía no esté al   100% implementado) , iniciar sesión (que no podremos todavía, ya que se implementará en una entrega posterior) y podremos entrar en la web de venta online. </p>
+<br>
+  <img src="https://cdn.discordapp.com/attachments/522438377165815808/818082495886262302/unknown.png">
+  <p> La siguiente pantalla corresponde con el formulario de registro del nuevo cliente. </p>
+<br>
+  <img src="https://cdn.discordapp.com/attachments/522438377165815808/818082556960047114/unknown.png">
+  <p> Esta pantalla corresponde con la tienda de la web. En ella, podremos ver los distintos productos ofertados en la web, ver nuestro carro de compra o incluso, en el caso de los administradores, tener opción de poder insertar nuevos productos en la web. </p>
+<br>
+  <img src="https://cdn.discordapp.com/attachments/522438377165815808/818082596256612382/unknown.png">
+  <p> La pantalla superior corresponde con el tipo de formulario que los administradores de la web podrán rellenar para introducir el producto que deseen </p>
+<br>
+  <img src"https://cdn.discordapp.com/attachments/522438377165815808/818083940689510440/unknown.png">
+  <p> En esta pantalla podremos visualizar los productos que hayamos añadido al carro de compra. En el caso de esta pantalla, no hemos añadido ninguno de los productos ofertados dentro del carro. Sin embargo, podemos garantizar que podemos añadir productos al carro y a su vez aparecerán en el mismo. </p>
+<br>
+  <img src="https://cdn.discordapp.com/attachments/522438377165815808/818083999993692190/unknown.png">
+  <p> Por último, podemos ver de manera más extensa cualquier producto ofertado en la web. Solo necesitamos hacer click en el producto (podremos hacer click tanto en el nombre como en la propia foto del producto) y podremos ver, entre otras cosas, cúantos productos se pueden comprar y la descripción del producto. </p>
+<br>
+<br>
+<h2> Diagrama de navegación </h2>
+<br>
+  <img src="https://cdn.discordapp.com/attachments/522438377165815808/818078074369343488/unknown.png">
+<br>
+<h2> Diagrama Entidad/Relación </h2>
+<br>
+  <img src="https://cdn.discordapp.com/attachments/522438377165815808/818084046097612820/modelo_entidad_relacion.PNG">
