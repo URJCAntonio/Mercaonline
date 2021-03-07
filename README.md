@@ -42,7 +42,7 @@ Web de venta online
   <p> Esta pantalla corresponde con la tienda de la web. En ella, podremos ver los distintos productos ofertados en la web, ver nuestro carro de compra o incluso, en el caso de los administradores, tener opción de poder insertar nuevos productos en la web. </p>
 <br>
   <img src="https://cdn.discordapp.com/attachments/522438377165815808/818082596256612382/unknown.png">
-  <p> La pantalla superior corresponde con el tipo de formulario que los administradores de la web podrán rellenar para introducir el producto que deseen </p>
+  <p> La pantalla superior corresponde con el tipo de formulario que los administradores de la web podrán rellenar para introducir el producto que deseen. </p>
 <br>
   <img src="https://cdn.discordapp.com/attachments/522438377165815808/818083940689510440/unknown.png">
   <p> En esta pantalla podremos visualizar los productos que hayamos añadido al carro de compra. En el caso de esta pantalla, no hemos añadido ninguno de los productos ofertados dentro del carro. Sin embargo, podemos garantizar que podemos añadir productos al carro y a su vez aparecerán en el mismo. </p>
