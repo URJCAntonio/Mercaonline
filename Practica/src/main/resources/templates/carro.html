@@ -1,21 +1,37 @@
 <html>
 <head>
 	<meta charset="UTF-8"/>
+	
+	<style>
+		img{
+				width: 300px;
+   				height: 300px;
+			}
+		body{
+		background: lightcyan;
+		}
+	
+	</style>
 </head>
 <body>
-	{{#carro}}
-		
-
-		
-		<a href="/producto/buy">Comprar productos elegidos </a>
-	{{/carro}}
+	{{#micarro}}
 	
-	{{^carro}}
+		<br><h1><a href="/producto{{idProducto}}">{{nombre}}</a> </h1>
+				<br>
+				<a href="/producto{{idProducto}}">
+				<img src={{url}}></a>
+				<h3>Precio : {{precio}} € </h3>
+				</a>
+				<br>		
+	{{/micarro}}
+	
+	{{^micarro}}
 	<p> Hasta el momento, no ha introducido productos en el carro</p>
 	
-	{{/carro}}
-	
+	{{/micarro}}
 	<br>
-	<a href=href= "/tienda">Volver al menú principal</a>
+	<a href="/producto/buy/">Comprar productos elegidos </a>
+	<br>
+	<a href="/tienda">Volver a la tienda</a>
 </body>
 </html>

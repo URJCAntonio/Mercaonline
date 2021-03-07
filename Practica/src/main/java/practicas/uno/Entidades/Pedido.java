@@ -7,6 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Pedido {
@@ -14,69 +17,61 @@ public class Pedido {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long idPedido;
-	private long idCliente;
+	
+	@ManyToOne
+	private Cliente cliente;
 	
 	@Column
 	private long numProductos;
 	
+	@Column
+	private double precio;
 	
-	public Pedido(long idPedido, long idCliente, long numProductos) {
+	@OneToMany
+	private List<Producto> productos;
 	
-		this.idPedido = idPedido;
-		this.idCliente = idCliente;
-		this.numProductos = numProductos;
+	//@Column
+	//private String fecha;
+	
+	public Pedido() {
+		
+	}
 
+	public Pedido(long numProductos, double precio, List<Producto> productos ) {
+
+		this.numProductos = numProductos;
+		this.precio=precio;
+		this.productos=productos;
 	}
 	
 	public long getIdPedido() {
 		return idPedido;
 	}
-	public void setIdPedido(long idPedido) {
-		this.idPedido = idPedido;
-	}
-	public long getIdCliente() {
-		return idCliente;
-	}
-	public void setIdCliente(long idCliente) {
-		this.idCliente = idCliente;
-	}
+	
+
 	public long getNumProductos() {
 		return numProductos;
 	}
 	public void setNumProductos(long numProductos) {
 		this.numProductos = numProductos;
 	}
+
+	public double getPrecio() {
+		return precio;
+	}
+
+	public void setPrecio(double precio) {
+		this.precio = precio;
+	}
+
+	public List<Producto> getProductos() {
+		return productos;
+	}
+
+	public void setProductos(List<Producto> productos) {
+		this.productos = productos;
+	}
 	
-
-	@Override
-	public String toString() {
-		return "Pedido [idPedido=" + idPedido + ", idCliente=" + idCliente + ", numProductos=" + numProductos + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + (int) (idCliente ^ (idCliente >>> 32));
-		result = prime * result + (int) (idPedido ^ (idPedido >>> 32));
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Pedido other = (Pedido) obj;
-		if (idCliente != other.idCliente)
-			return false;
-		if (idPedido != other.idPedido)
-			return false;
-		return true;
-	}
 
 	
 	

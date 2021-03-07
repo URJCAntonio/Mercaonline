@@ -33,15 +33,10 @@ public class Stock {
 	public Stock(long unidades) {
 	
 		this.unidadesPorProducto = unidades;
-
 	}
 
 	public long getIdStock() {
 		return idStock;
-	}
-
-	public void setIdStock(long idStock) {
-		this.idStock = idStock;
 	}
 
 	public long getUnidadesPorProducto() {
@@ -60,8 +55,6 @@ public class Stock {
 	public void setProductos(Producto productos) {
 		this.productos = productos;
 	}
-
-
 
 	@Override
 	public int hashCode() {

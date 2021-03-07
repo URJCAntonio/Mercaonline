@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -24,8 +25,11 @@ public class Cliente {
 	@Column(unique=true)
 	private String email;
 	
-	//@OneToOne(cascade=CascadeType.ALL)
-	//private Carro carro;
+	@OneToOne(cascade=CascadeType.ALL)
+	private Carro carro;
+	
+	//@OneToMany
+	//private long idPedido;
 	
 	public Cliente() {
 		
@@ -39,8 +43,8 @@ public class Cliente {
 	public long getId() {
 		return idCliente;
 	}
-	public void setId(long id) {
-		this.idCliente = id;
+	public void setId(long idCliente) {
+		this.idCliente = idCliente;
 	}
 	public String getNombre() {
 		return nombre;
@@ -61,6 +65,13 @@ public class Cliente {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public Carro getCarro() {
+		return carro;
+	}
+	public void setCarro(Carro carro) {
+		this.carro = carro;
 	}
 	@Override
 	public String toString() {

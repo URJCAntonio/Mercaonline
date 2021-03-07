@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -25,41 +26,32 @@ public class Carro {
 	@Column
 	private double precio;
 	
-	//@OneToOne(mappedBy="carro")
-	//private Cliente cliente;
+	@OneToOne(mappedBy="carro")
+	private Cliente cliente;
 	
-	/*@OneToMany
+	@OneToMany
 	private List<Producto> productos;
-	*/
 	
 	
-	public Carro(long id, long numProductos, long precio) {
-
-		this.idCarro = id;
-		this.numProductos = numProductos;
-		this.precio = precio;
-
+	public Carro() {
+		this.numProductos=0;
+		this.precio=0;
 	}
 	
 	public long getId() {
 		return idCarro;
 	}
-	public void setId(long id) {
-		this.idCarro = id;
-	}
 	public long getNumProductos() {
 		return numProductos;
-	}
-	public void setNumProductos(long numProductos) {
-		this.numProductos = numProductos;
 	}
 	public double getPrecio() {
 		return precio;
 	}
-	public void setPrecio(double precio) {
-		this.precio = precio;
-	}
 	
+	public List<Producto> getProductos() {
+		return productos;
+	}
+
 	@Override
 	public String toString() {
 		return "Carro [idCarro=" + idCarro + ", numProductos=" + numProductos + ", precio=" + precio + "]";
@@ -86,7 +78,23 @@ public class Carro {
 		return true;
 	}
 	
+	public void addProducto(Producto producto) {
+		productos.add(producto);
+		numProductos++;
+		precio += producto.getPrecio();
+	}
+	public void deleteProducto(Producto producto) {
+		if(productos.remove(producto)) {
+			numProductos--;
+			precio -= producto.getPrecio();
+		}
+	}
 	
-	
+	//Cuando compramos, vaciamos el carro, todo se va a un pedido
+	public void reiniciar() {
+		productos.clear();
+		precio=0;
+		numProductos=0;
+	}
 	
 }

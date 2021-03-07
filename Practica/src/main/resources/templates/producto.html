@@ -8,6 +8,10 @@
    				height: 350px;
 			}
 			
+			body{
+				background: lightcyan;
+			}
+	
 		</style>
 	</head>
 	<body>
@@ -16,7 +20,7 @@
 			<p> {{miproducto.descripcion}} </p>
 			<p> Número de unidades restantes: {{unidades}}</p>
 		<br>
-	<a href="/producto/addtocarro">Añadir producto al carro de compra. </a>
+	<a href="/producto/addtocarro/{{miproducto.idProducto}}">Añadir producto al carro de compra.</a>
 	<br>
 	<a>Eliminar producto</a> 
 	<br>

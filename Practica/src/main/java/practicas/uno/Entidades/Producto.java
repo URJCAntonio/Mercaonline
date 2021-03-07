@@ -31,6 +31,9 @@ public class Producto {
 	@OneToOne(cascade=CascadeType.ALL)
 	private Stock stock;
 	
+	//@Column
+	//private String tipoProducto;
+	
 	public Producto() {
 	
 	}
@@ -40,7 +43,7 @@ public class Producto {
 		this.nombre = nombre;
 		this.descripcion=descripcion;
 		this.url=url;
-
+		
 	}
 	public Stock getStock() {
 		return stock;
@@ -50,9 +53,6 @@ public class Producto {
 	}
 	public long getId() {
 		return idProducto;
-	}
-	public void setId(long id) {
-		this.idProducto = id;
 	}
 	public double getPrecio() {
 		return precio;
