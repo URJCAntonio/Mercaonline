@@ -1,3 +1,4 @@
+<meta charset="UTF-8"/>
 # Mercaonline
 Web de venta online
 <p>Esta web está dirigida a la venta de articulos a múltiples usuarios. Un cliente debe poder ver todos los productos del catalogo. Un cliente podrá filtrar según la categoría del producto que desea. El cliente podrá almacenar los productos en un carro de compra para realizar el pago conjunto. Solo podrán alterar el catálogo los administradores. Un cliente podrá agregar productos a un carro, pero solo se podrá realizar una compra si el usuario está registrado. Un usuario invitado puede registrarse o loguearse manteniendo su carro de la compra.</p>
