@@ -59,3 +59,5 @@
 <h2> Diagrama Entidad/Relación </h2>
 <br>
   <img src="https://cdn.discordapp.com/attachments/522438377165815808/818084046097612820/modelo_entidad_relacion.PNG">
+<h2> Diagrama UML </h2>
+<img src="https://cdn.discordapp.com/attachments/522438377165815808/818827672623906855/UML.PNG">
