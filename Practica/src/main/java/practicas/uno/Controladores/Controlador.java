@@ -17,6 +17,7 @@ import practicas.uno.Entidades.Pedido;
 import practicas.uno.Entidades.Producto;
 import practicas.uno.Entidades.Stock;
 import practicas.uno.Repositorios.RepoCliente;
+import practicas.uno.Repositorios.RepoPedidos;
 import practicas.uno.Repositorios.RepoProducto;
 
 
@@ -30,7 +31,8 @@ public class Controlador {
 	@Autowired
 	private RepoCliente repositorioCliente;
 	
-	
+	@Autowired
+	private RepoPedidos repositorioPedido;
 	
 	/*@PostConstruct
 	public void init() {
@@ -115,8 +117,16 @@ public class Controlador {
 			target.getCarro().reiniciar();
 			return target;
 		}).get());
+		repositorioPedido.save(mipedido);
 		m.addAttribute("mipedido",mipedido);
 		return "pedido_realizado";
 	}
 	
+	
+	@GetMapping("/mispedidos")
+	public String obtenerPedidos(Model m) {
+		List<Pedido> mispedidos= repositorioPedido.findByCliente((long)1);      
+		m.addAttribute("mispedidos", mispedidos);
+		return "pedidos";
+	}
 }
