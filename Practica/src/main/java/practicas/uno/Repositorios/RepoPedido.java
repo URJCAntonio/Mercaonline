@@ -8,5 +8,5 @@ import practicas.uno.Entidades.Pedido;
 
 public interface RepoPedido extends JpaRepository<Pedido, Long>{
 
-	List<Pedido> findByCliente(long idCliente);
+	List<Pedido> findByCliente_IdCliente(long idCliente);
 }

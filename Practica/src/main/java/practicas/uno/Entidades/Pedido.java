@@ -37,11 +37,11 @@ public class Pedido {
 		
 	}
 
-	public Pedido(long numProductos, double precio, List<Producto> productos ) {
+	public Pedido(long numProductos, double precio, List<Producto> productos, Cliente cliente ) {
 
 		this.numProductos = numProductos;
 		this.precio=precio;
-		this.productos=productos;
+		this.cliente=cliente;
 	}
 	
 	public long getIdPedido() {

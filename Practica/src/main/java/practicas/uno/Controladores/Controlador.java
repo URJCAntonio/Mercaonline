@@ -2,6 +2,7 @@ package practicas.uno.Controladores;
 
 
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import practicas.uno.Entidades.Pedido;
 import practicas.uno.Entidades.Producto;
 import practicas.uno.Entidades.Stock;
 import practicas.uno.Repositorios.RepoCliente;
+import practicas.uno.Repositorios.RepoPedido;
 import practicas.uno.Repositorios.RepoProducto;
 
 
@@ -30,9 +32,10 @@ public class Controlador {
 	@Autowired
 	private RepoCliente repositorioCliente;
 	
+	@Autowired
+	private RepoPedido repositorioPedido;
 	
-	
-	/*@PostConstruct
+	@PostConstruct
 	public void init() {
 		Cliente admin = new Cliente("admin","1234", "admin@gmail.com");
 		admin.setCarro(new Carro());
@@ -42,7 +45,7 @@ public class Controlador {
 		inicial.setStock(new Stock(69));
 		repositorioProducto.save(inicial);
 		
-	}*/
+	}
 	
 	
 	@GetMapping("/tienda")
@@ -91,10 +94,7 @@ public class Controlador {
 	public String addtoCarro(Model m, @PathVariable Long miproducto) {
 		Cliente cliente= repositorioCliente.findById((long)1).get();
 		cliente.getCarro().addProducto(repositorioProducto.findById(miproducto).get());
-		repositorioCliente.save(repositorioCliente.findById((long)1).map(target -> {
-			target.setId((long)1);
-			return target;
-		}).get());
+		repositorioCliente.save(cliente);
 		m.addAttribute("micarro",cliente.getCarro().getProductos());
 		return "carro";
 	}
@@ -109,14 +109,26 @@ public class Controlador {
 	@GetMapping("/producto/buy")
 	public String realizarPedido(Model m) {
 		Carro c= repositorioCliente.findById((long)1).get().getCarro();
-		Pedido mipedido= new Pedido(c.getNumProductos(),c.getPrecio(), c.getProductos());
+		Pedido mipedido= new Pedido(c.getNumProductos(),c.getPrecio(), c.getProductos(), c.getCliente());
+		List<Producto> misproductos= new ArrayList<>(c.getProductos());
+		mipedido.setProductos(misproductos);
+		repositorioPedido.save(mipedido);
 		repositorioCliente.save(repositorioCliente.findById((long)1).map(target -> {
 			target.setId((long)1);
 			target.getCarro().reiniciar();
 			return target;
 		}).get());
+		 
 		m.addAttribute("mipedido",mipedido);
 		return "pedido_realizado";
+	}
+	
+	@GetMapping("/pedidos")
+	public String verPedidos(Model m) {
+		List<Pedido> mispedidos= repositorioPedido.findByCliente_IdCliente((long)1);
+		m.addAttribute("mispedidos", mispedidos);
+		
+		return "pedidos";
 	}
 	
 }

@@ -52,6 +52,11 @@ public class Carro {
 		return productos;
 	}
 
+	
+	public Cliente getCliente() {
+		return cliente;
+	}
+
 	@Override
 	public String toString() {
 		return "Carro [idCarro=" + idCarro + ", numProductos=" + numProductos + ", precio=" + precio + "]";
