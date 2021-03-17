@@ -131,4 +131,9 @@ public class Controlador {
 		return "pedidos";
 	}
 	
+	@GetMapping("/pedido/{idPedido}")
+    public String verPedido(Model m, @PathVariable long idPedido) {
+        m.addAttribute("mispedidos", repositorioPedido.findById(idPedido));
+        return "pedidos";
+    }
 }
