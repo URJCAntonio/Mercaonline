@@ -26,8 +26,6 @@ public class Pedido {
 	@Column
 	private double precio;
 	
-	
-
 	@ManyToMany
 	private List<Producto> productos;
 	

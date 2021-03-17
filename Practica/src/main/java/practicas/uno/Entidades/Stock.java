@@ -34,6 +34,10 @@ public class Stock {
 	
 		this.unidadesPorProducto = unidades;
 	}
+	
+	public void sacarUnidades(long l) {
+		unidadesPorProducto-=l;
+	}
 
 	public long getIdStock() {
 		return idStock;

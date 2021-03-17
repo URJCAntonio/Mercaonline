@@ -45,6 +45,13 @@ public class Producto {
 		this.url=url;
 		
 	}
+	
+	public void decrementarStock(long l) {
+		this.getStock().sacarUnidades(l);
+	}
+	
+	
+	
 	public Stock getStock() {
 		return stock;
 	}

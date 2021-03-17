@@ -4,7 +4,6 @@ package practicas.uno.Controladores;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -113,15 +112,11 @@ public class Controlador {
 		Carro c= cliente.getCarro();
 		Pedido mipedido= new Pedido(c.getNumProductos(),c.getPrecio(), c.getProductos(), c.getCliente());
 		List<Producto> misproductos= new ArrayList<>(c.getProductos());
+		for (Producto producto : misproductos) {
+			producto.decrementarStock(1);
+		}
 		mipedido.setProductos(misproductos);
 		repositorioPedido.save(mipedido);
-		/*
-		repositorioCliente.save(repositorioCliente.findById((long)1).map(target -> {
-			target.setId((long)1);
-			target.getCarro().reiniciar();
-			return target;
-		}).get());
-		 */
 		cliente.getCarro().reiniciar();
 		repositorioCliente.save(cliente);
 		m.addAttribute("mipedido",mipedido);
