@@ -7,9 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 @Entity
 public class Pedido {
@@ -27,7 +26,9 @@ public class Pedido {
 	@Column
 	private double precio;
 	
-	@OneToMany
+	
+
+	@ManyToMany
 	private List<Producto> productos;
 	
 	//@Column
@@ -72,7 +73,11 @@ public class Pedido {
 		this.productos = productos;
 	}
 	
-
+	@Override
+	public String toString() {
+		return "Pedido [idPedido=" + idPedido + ", cliente=" + cliente + ", numProductos=" + numProductos + ", precio="
+				+ precio + ", productos=" + productos + "]";
+	}
 	
 	
 	

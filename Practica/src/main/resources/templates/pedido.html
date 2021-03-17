@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+
+            body{
+                background: lightcyan;
+            }
+
+        </style>
+    </head>
+    <body>
+    	<h1>Pedido</h1>
+    	<p>ID: {{idPedido}}</p>
+    	<p>Nombre: {{mipedido.cliente.nombre}}</p>
+    	<p>Productos</p>
+    	<table>
+    		<tr>
+    			<th>Nombre</th>
+    			<th>Precio</th>
+    			<th>Imagen</th>
+    		</tr>
+    		{{#mipedido.productos}}
+    		<tr>
+    			<th>{{nombre}}</th>
+    			<th>{{precio}}</th>
+    			<th><a href="/producto{{idProducto}}"><img src="{{url}}" width="50px" height="50px"/></a></th>
+    		</tr>
+    		{{/mipedido.productos}}	
+    	<p>{{mipedido.precio}}</p>
+		</table>
+
+    <a href="/tienda">Volver a la tienda. </a>
+    </body>
+
+</html>

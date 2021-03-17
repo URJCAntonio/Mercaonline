@@ -11,19 +11,19 @@
 	</head>
 	<body>
 		<table>
-			<tr>
-				<th> IdPedido </th>
-				<th> Precio </th>
-			</tr>
-			{{#mispedidos}}
-			<tr>
-				<td> {{idPedido}} </td>
-				<td> {{precio}} </td>
-			</tr>
-				
-			{{/mispedidos}}
-		
-		</table>
+            <tr>
+                <th> IdPedido </th>
+                <th> Precio </th>
+            </tr>
+            {{#mispedidos}}
+            <tr>
+                <td> <a href="/pedido/{{idPedido}}">{{idPedido}}</a> </td>
+                <td> {{precio}} </td>
+            </tr>
+
+            {{/mispedidos}}
+
+        </table>
 		
 	<a href="/tienda">Volver a la tienda. </a>
 	</body>

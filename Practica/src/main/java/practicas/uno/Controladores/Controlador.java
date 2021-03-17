@@ -34,7 +34,7 @@ public class Controlador {
 	
 	@Autowired
 	private RepoPedido repositorioPedido;
-	
+	/*
 	@PostConstruct
 	public void init() {
 		Cliente admin = new Cliente("admin","1234", "admin@gmail.com");
@@ -46,6 +46,7 @@ public class Controlador {
 		repositorioProducto.save(inicial);
 		
 	}
+	*/
 	
 	
 	@GetMapping("/tienda")
@@ -108,17 +109,21 @@ public class Controlador {
 	
 	@GetMapping("/producto/buy")
 	public String realizarPedido(Model m) {
-		Carro c= repositorioCliente.findById((long)1).get().getCarro();
+		Cliente cliente= repositorioCliente.findById((long)1).get();
+		Carro c= cliente.getCarro();
 		Pedido mipedido= new Pedido(c.getNumProductos(),c.getPrecio(), c.getProductos(), c.getCliente());
 		List<Producto> misproductos= new ArrayList<>(c.getProductos());
 		mipedido.setProductos(misproductos);
 		repositorioPedido.save(mipedido);
+		/*
 		repositorioCliente.save(repositorioCliente.findById((long)1).map(target -> {
 			target.setId((long)1);
 			target.getCarro().reiniciar();
 			return target;
 		}).get());
-		 
+		 */
+		cliente.getCarro().reiniciar();
+		repositorioCliente.save(cliente);
 		m.addAttribute("mipedido",mipedido);
 		return "pedido_realizado";
 	}
@@ -133,7 +138,7 @@ public class Controlador {
 	
 	@GetMapping("/pedido/{idPedido}")
     public String verPedido(Model m, @PathVariable long idPedido) {
-        m.addAttribute("mispedidos", repositorioPedido.findById(idPedido));
-        return "pedidos";
+        m.addAttribute("mipedido", repositorioPedido.findById(idPedido).get());
+        return "pedido";
     }
 }
