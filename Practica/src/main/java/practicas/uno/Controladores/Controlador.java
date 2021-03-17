@@ -33,6 +33,7 @@ public class Controlador {
 	
 	@Autowired
 	private RepoPedido repositorioPedido;
+	
 	/*
 	@PostConstruct
 	public void init() {
@@ -47,7 +48,7 @@ public class Controlador {
 	}
 	*/
 	
-	
+	/*
 	@GetMapping("/tienda")
 	public String obtenerProductos(Model m) {
 		List<Producto> l2 = repositorioProducto.findAll();
@@ -73,13 +74,6 @@ public class Controlador {
 		repositorioProducto.save(miproducto);
 		return "producto_guardado";
 	}
-	
-	
-	/*@GetMapping("/producto/{idProducto}/delete")
-	public String deleteProducto(Model m, @PathVariable Long idProducto) {
-		repositorioProducto.deleteById(idProducto);
-		return "producto_eliminado";
-	}*/
 	
 	@PostMapping("/signin")
 	public String registrarCliente(Model m, @RequestParam String nombre, @RequestParam String email, @RequestParam String password) {
@@ -136,4 +130,5 @@ public class Controlador {
         m.addAttribute("mipedido", repositorioPedido.findById(idPedido).get());
         return "pedido";
     }
+    */
 }
