@@ -12,8 +12,10 @@ import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import practicas.uno.Entidades.Carro;
 import practicas.uno.Entidades.Cliente;
@@ -51,15 +53,9 @@ public class Controlador {
 		
 	}
 	*/
-	
-	@PostMapping("/registro")
-	public String registrarCliente(Model m, HttpServletRequest request) {
-		
-		CsrfToken token = (CsrfToken) request.getAttribute("_csrf");
-		m.addAttribute("token", token.getToken()); 
-		return "registro";
+
+	@PostMapping("/failUrl")
+	public String registrarCliente() {
+		return "failUrl";
 	}
-	
-	
-	
 }

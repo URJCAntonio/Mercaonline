@@ -13,10 +13,12 @@ public class DatabaseUsersLoader {
 	
 	@Autowired
 	private RepoCliente repositorioCliente;
+	
+	/*
 	@PostConstruct
 	private void initDatabase() {
-
 	repositorioCliente.save(new Cliente("cliente","pass","user@email.net","CLIENTE"));
 	repositorioCliente.save(new Cliente("admin","adminpass","admin@email.net","CLIENTE","ADMIN"));
- }
+	}
+	*/
 }

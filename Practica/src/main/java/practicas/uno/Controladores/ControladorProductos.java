@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -34,6 +35,10 @@ public class ControladorProductos {
 	@Autowired
 	private RepoPedido repositorioPedido;
 	
+	@ModelAttribute
+	public void addAttributes(Model model) {
+	    //model.addAttribute("msg", "Welcome to the Netherlands!");
+	}
 	
 	@GetMapping("/tienda")
 	public String obtenerProductos(Model m) {

@@ -3,13 +3,13 @@
 	<meta charset="UTF-8"/>
 	<style>
 	body{
-		background: #86ff00;
+		background: lightcyan;
 	}
 	</style>
 	</head>
 
 	<body>
-		<form action="/registrarse" method="POST">
+		<form action="/login" method="POST">
 		
 			<p> Nombre: </p>
 			<input type="text" name="nombre"/>
@@ -22,9 +22,9 @@
 			
 			<br>
 			<input type="submit" value="Registrarse"/>
-			<input type="hidden" name="_csrf" value="{{token}}"/>
 			
 		</form>
 	</body>
-		
+	
+	
 </html>
