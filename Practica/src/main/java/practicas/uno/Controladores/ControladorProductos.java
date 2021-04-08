@@ -4,6 +4,8 @@ package practicas.uno.Controladores;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,7 +13,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+
 import practicas.uno.Entidades.Carro;
 import practicas.uno.Entidades.Cliente;
 import practicas.uno.Entidades.Pedido;
@@ -49,16 +56,25 @@ public class ControladorProductos {
 	
 	
 	@GetMapping("/producto{idProducto}")
-	public String obtenerProducto(Model m, @PathVariable Long idProducto) {
-		Producto miproducto= repositorioProducto.findById(idProducto).get();
-
-		m.addAttribute("miproducto",miproducto);
+	public ResponseEntity<Producto> obtenerProducto(@PathVariable Long idProducto) {
+		/* m.addAttribute("miproducto",miproducto);
 		m.addAttribute("unidades",miproducto.getStock().getUnidadesPorProducto());
-		return "producto";
+		
+		Producto miproducto= repositorioProducto.findById(idProducto).get();
+		*/
+		//return "producto";
+		Optional<Producto> miproducto= repositorioProducto.findById(idProducto);
+		if( miproducto.isPresent()) {
+			Producto producto= miproducto.get();
+			return new ResponseEntity<>(producto,HttpStatus.OK);
+		}
+		else return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		
 	}
 	
 	@PostMapping("/producto/add")
-	public String addProducto(Model m, @RequestParam String nombre, @RequestParam String descripcion, @RequestParam String url,
+	@ResponseStatus(HttpStatus.CREATED)
+	public String addProducto(Model m, @RequestBody String nombre, @RequestBody String descripcion, @RequestBody String url,
 			@RequestParam Double precio, @RequestParam Long unidades) {
 		Producto miproducto = new Producto(precio,nombre,descripcion,url);
 		miproducto.setStock(new Stock(unidades));
@@ -67,7 +83,7 @@ public class ControladorProductos {
 	}
 	
 	/*
-	@GetMapping("/producto/{idProducto}/delete")
+	@DeleteMapping("/producto/{idProducto}/delete")
 	public String deleteProducto(Model m, @PathVariable Long idProducto) {
 		repositorioProducto.deleteById(idProducto);
 		return "producto_eliminado";

@@ -14,8 +14,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
 import practicas.uno.Entidades.Carro;
 import practicas.uno.Entidades.Cliente;
 import practicas.uno.Repositorios.RepoCliente;
@@ -24,7 +27,8 @@ import practicas.uno.Repositorios.RepoProducto;
 
 
 
-@Controller
+//@Controller
+@RestController
 public class ControladorClientes {
 
 	@Autowired
@@ -53,7 +57,7 @@ public class ControladorClientes {
 	}
 		
 	@PostMapping("/registrarse")
-	public String registrarCliente(Model m, @RequestParam String nombre, @RequestParam String email, @RequestParam String password) {
+	public String registrarCliente(Model m, @RequestBody String nombre, @RequestBody String email, @RequestBody String password) {
 		Cliente micliente= new Cliente(nombre,password, email);
 		micliente.setCarro(new Carro());
 		repositorioCliente.save(micliente);
