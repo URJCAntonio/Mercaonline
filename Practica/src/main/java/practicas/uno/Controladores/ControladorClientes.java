@@ -65,10 +65,10 @@ public class ControladorClientes {
 		return "tienda";
 	}
 	
-	@RequestMapping("/login")
+	/*@RequestMapping("/login")
 	public String login() {
 		return "login";
-	}
+	}*/
 	
 	@GetMapping("/producto/addtocarro/{miproducto}")
 	public String addtoCarro(Model m, @PathVariable Long miproducto) {
