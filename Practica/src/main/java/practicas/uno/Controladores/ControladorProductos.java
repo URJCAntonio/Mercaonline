@@ -7,8 +7,10 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -74,19 +76,28 @@ public class ControladorProductos {
 	
 	@PostMapping("/producto/add")
 	@ResponseStatus(HttpStatus.CREATED)
-	public String addProducto(Model m, @RequestBody String nombre, @RequestBody String descripcion, @RequestBody String url,
+	public Producto addProducto(Model m, @RequestBody String nombre, @RequestBody String descripcion, @RequestBody String url,
 			@RequestParam Double precio, @RequestParam Long unidades) {
+		
 		Producto miproducto = new Producto(precio,nombre,descripcion,url);
 		miproducto.setStock(new Stock(unidades));
 		repositorioProducto.save(miproducto);
-		return "producto_guardado";
+		//return "producto_guardado";	
+		return miproducto;
 	}
 	
-	/*
+	
 	@DeleteMapping("/producto/{idProducto}/delete")
-	public String deleteProducto(Model m, @PathVariable Long idProducto) {
-		repositorioProducto.deleteById(idProducto);
-		return "producto_eliminado";
+	public ResponseEntity<Producto> deleteProducto( @PathVariable Long idProducto) {
+		//repositorioProducto.deleteById(idProducto);
+		//return "producto_eliminado";
+		try {
+			repositorioProducto.deleteById(idProducto);
+			return new ResponseEntity<> (null,HttpStatus.OK);
+			
+		}catch (EmptyResultDataAccessException exc) {
+			return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
+		}
 	}
-	*/
+	
 }
