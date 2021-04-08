@@ -1,8 +1,12 @@
 package practicas.uno.Entidades;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,6 +29,9 @@ public class Cliente {
 	@Column(unique=true)
 	private String email;
 	
+	@ElementCollection(fetch = FetchType.EAGER)
+	private List<String> roles;
+	
 	@OneToOne(cascade=CascadeType.ALL)
 	private Carro carro;
 	
@@ -34,11 +41,12 @@ public class Cliente {
 	public Cliente() {
 		
 	}
-	public Cliente(String nombre, String password, String email) {
+	public Cliente(String nombre, String password, String email,String... roles) {
 	
 		this.nombre = nombre;
 		this.password=password;
 		this.email = email;
+		this.roles = List.of(roles);
 	}
 	public long getId() {
 		return idCliente;
