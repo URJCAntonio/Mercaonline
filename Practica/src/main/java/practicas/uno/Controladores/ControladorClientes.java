@@ -37,7 +37,7 @@ public class ControladorClientes {
 	
 	
 		
-	@PostMapping("/registro")
+	@PostMapping("/registrarse")
 	public String registrarCliente(Model m, @RequestParam String nombre, @RequestParam String email, @RequestParam String password) {
 		Cliente micliente= new Cliente(nombre,password, email);
 		micliente.setCarro(new Carro());
