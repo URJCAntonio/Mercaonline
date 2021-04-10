@@ -76,6 +76,13 @@ public class Controlador {
 		return "login";
 	}
 	
+	@RequestMapping("/logout")
+	public String logout() {
+		System.err.println(repositorioCliente.findByNombre("user").get().getNombre());
+		System.err.println(repositorioCliente.findByNombre("user").get().getPassword());
+		return "login";
+	}
+	
 	@RequestMapping("/failUrl")
 	public String registrarCliente() {
 		return "failUrl";
