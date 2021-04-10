@@ -16,21 +16,21 @@
 	<a href ="/tienda">Acceder a MercaOnline </a>
 	<br>
 	<a href="/registro">Registrase en la web </a>
-	{{^logged}}
 	<br>
-	<a href="/login">Iniciar Sesion</a>
-	<form action="/login" method="POST">
-                            <button type="submit">Iniciar Sesion</button>
-                            <input type="hidden" name="_csrf" value="{{token}}" />
+	{{^logged}}
+	<form action="/addProducto" method="post">
+    	<button type="submit">LogIn</button>
+        <input type="hidden" name="_csrf" value="{{token}}" />
 	</form>
 	{{/logged}}
 	
 	{{#logged}}
 	<form action="/logout" method="post">
-                            <button type="submit">Cerrar Sesion</button>
-                            <input type="hidden" name="_csrf" value="{{token}}" />
+    	<button type="submit">Cerrar Sesion</button>
+        <input type="hidden" name="_csrf" value="{{token}}" />
 	</form>
 	{{/logged}}
+	
 </body>
 
 
