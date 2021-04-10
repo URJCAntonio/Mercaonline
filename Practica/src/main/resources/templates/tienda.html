@@ -20,8 +20,25 @@
 	</head>
 	<body>
 	<a href="/">volver</a>
+	
+			
+	{{^producto}}
+	<p> No hay productos anunciados. Vuelva en otro momento.</p>
+	{{/producto}}
+		
+	<br>
+	{{#admin}}
+		<a href="/addProducto">Añadir nuevo producto. </a> 	
+	{{/admin}}
+	
+		
+	<br>
+	<a href="/carro">Acceder al carro de compra. </a>
+	<br>
+	<a href="/pedidos">Ver mi historial de pedidos </a>
+	
 	{{#producto}}
-		<div class="Escaparate" tag=" "> 
+		<div class="Escaparate" tag=" ">
 			<div class= "Producto">
 				
 				<br><h1><a href="/producto{{idProducto}}">{{nombre}}</a> </h1>
@@ -34,18 +51,6 @@
 			</div>
 		</div>
 	{{/producto}}
-			
-	{{^producto}}
-	<p> No hay productos anunciados. Vuelva en otro momento.</p>
-	{{/producto}}
-		
-		<br>
-		
-	<a href="añadir_producto.html">Añadir nuevo producto. </a> 	
-		
-	<br>
-	<a href="/carro">Acceder al carro de compra. </a>
-	<a href="/pedidos">Ver mi historial de pedidos </a>
 
 	</body>
 </html>

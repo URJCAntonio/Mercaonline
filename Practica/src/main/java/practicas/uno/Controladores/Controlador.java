@@ -2,6 +2,7 @@ package practicas.uno.Controladores;
 
 
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,9 +54,39 @@ public class Controlador {
 		
 	}
 	*/
+	@ModelAttribute
+	public void addAttributes(Model model, HttpServletRequest request) {
 
-	@PostMapping("/failUrl")
+		Principal principal = request.getUserPrincipal();
+
+		if (principal != null) {
+			model.addAttribute("logged", true);
+			model.addAttribute("admin", request.isUserInRole("ADMIN"));
+			model.addAttribute("name", request.getRemoteUser());
+
+		} else {
+			model.addAttribute("logged", false);
+		}
+	}
+	
+	@RequestMapping("/login")
+	public String login() {
+		System.err.println(repositorioCliente.findByNombre("user").get().getNombre());
+		System.err.println(repositorioCliente.findByNombre("user").get().getPassword());
+		return "login";
+	}
+	
+	@RequestMapping("/failUrl")
 	public String registrarCliente() {
 		return "failUrl";
+	}
+	
+	@GetMapping("/registro")
+	public String pagRegistro() {
+		return "registro";
+	}
+	@GetMapping("/addProducto")
+	public String addProducto() {
+		return "añadir_producto";
 	}
 }

@@ -8,6 +8,7 @@ import java.security.Principal;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,16 +37,18 @@ public class ControladorClientes {
 	@Autowired
 	private RepoPedido repositorioPedido;
 	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+	
 	@ModelAttribute
 	public void addAttributes(Model model, HttpServletRequest request) {
 
 		Principal principal = request.getUserPrincipal();
 
 		if (principal != null) {
-
 			model.addAttribute("logged", true);
-			model.addAttribute("userName", principal.getName());
 			model.addAttribute("admin", request.isUserInRole("ADMIN"));
+			model.addAttribute("name", request.getRemoteUser());
 
 		} else {
 			model.addAttribute("logged", false);
@@ -53,23 +56,29 @@ public class ControladorClientes {
 	}
 		
 	@PostMapping("/registrarse")
-	public String registrarCliente(Model m, @RequestParam String nombre, @RequestParam String email, @RequestParam String password) {
-		Cliente micliente= new Cliente(nombre,password, email);
+	public String registrarCliente(Model m, @RequestParam String nombre, @RequestParam String email, @RequestParam String password, HttpServletRequest request) {
+		
+		Cliente micliente;
+		
+		if(request.isUserInRole("ADMIN")) {
+			micliente = new Cliente(nombre, passwordEncoder.encode(password), email, "USER", "ADMIN");
+		}else {
+			micliente= new Cliente(nombre, passwordEncoder.encode(password), email, "USER");
+		}
+		
 		micliente.setCarro(new Carro());
 		repositorioCliente.save(micliente);
 		m.addAttribute("producto",repositorioProducto.findAll());
 		return "tienda";
 	}
 	
-	@RequestMapping("/login")
-	public String login() {
-		return "login";
-	}
-	
 	@GetMapping("/producto/addtocarro/{miproducto}")
-	public String addtoCarro(Model m, @PathVariable Long miproducto) {
-		Cliente cliente= repositorioCliente.findById((long)1).get();
+	public String addtoCarro(Model m, @PathVariable Long miproducto, HttpServletRequest request) {
+		//Se almacena el cliente correspondiente a la sesión en la variable cliente
+		Cliente cliente= repositorioCliente.findByNombre(request.getRemoteUser()).get();
+		// Se añade al carro del cliente el producto
 		cliente.getCarro().addProducto(repositorioProducto.findById(miproducto).get());
+		// Se almacena en la base de datos el cliente con el carro actualizado
 		repositorioCliente.save(cliente);
 		m.addAttribute("micarro",cliente.getCarro().getProductos());
 		return "carro";
@@ -77,8 +86,8 @@ public class ControladorClientes {
 	
 	
 	@GetMapping("/carro")
-	public String goCarro(Model m) {
-		Cliente cliente= repositorioCliente.findById((long)1).get();
+	public String goCarro(Model m, HttpServletRequest request) {
+		Cliente cliente= repositorioCliente.findByNombre(request.getRemoteUser()).get();
 		if(cliente.getCarro() != null) {
 			m.addAttribute("micarro",cliente.getCarro().getProductos());
 		}

@@ -8,9 +8,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.password.PasswordEncoder;
-
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import practicas.uno.Servicios.RepositoryUserDetailsService;
 
@@ -28,6 +27,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	}
 	
 	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+
+		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+		
+	}
+	
+	@Override
 	 protected void configure(HttpSecurity http) throws Exception {
 
 		// Public pages
@@ -38,30 +44,26 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/producto").permitAll();
 		http.authorizeRequests().antMatchers("/carro").permitAll();
 		http.authorizeRequests().antMatchers("/registro").permitAll();
-		http.authorizeRequests().antMatchers("registro.html").permitAll();
 		http.authorizeRequests().antMatchers("/loginerror").permitAll();	//Crear loginError
 		http.authorizeRequests().antMatchers("/logout").permitAll();		//Crear LogOut
 		
 		// Private pages (all other pages)
 		http.authorizeRequests().antMatchers("/home").hasAnyRole("USER");
-		http.authorizeRequests().antMatchers("/admin").hasAnyRole("ADMIN");
-
-		http.authorizeRequests().anyRequest().authenticated();
+		http.authorizeRequests().antMatchers("/addProducto").hasAnyRole("ADMIN");
+		http.authorizeRequests().antMatchers("//producto/add").hasAnyRole("ADMIN");
 		
 		// Login form
-		 http.formLogin().loginPage("/login");
-		 http.formLogin().usernameParameter("nombre");
-		 http.formLogin().passwordParameter("password");
-		 http.formLogin().defaultSuccessUrl("/");
-		 http.formLogin().failureUrl("/failUrl");
+		http.formLogin().loginPage("/login");
+		http.formLogin().usernameParameter("nombre");
+		http.formLogin().passwordParameter("password");
+		http.formLogin().defaultSuccessUrl("/");
+		http.formLogin().failureUrl("/failUrl");
+		
+		// Logout
+        http.logout().logoutUrl("/logout");
+        http.logout().logoutSuccessUrl("/");
 	}
 	
-	@Override
-	 protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-
-	 // User
-	 auth.inMemoryAuthentication()
-	 .withUser("user").password("pass").roles("USER");
-	 }
+	
 
 }

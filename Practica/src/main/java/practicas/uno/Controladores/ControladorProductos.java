@@ -2,8 +2,12 @@ package practicas.uno.Controladores;
 
 
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,8 +40,18 @@ public class ControladorProductos {
 	private RepoPedido repositorioPedido;
 	
 	@ModelAttribute
-	public void addAttributes(Model model) {
-	    //model.addAttribute("msg", "Welcome to the Netherlands!");
+	public void addAttributes(Model model, HttpServletRequest request) {
+
+		Principal principal = request.getUserPrincipal();
+
+		if (principal != null) {
+			model.addAttribute("logged", true);
+			model.addAttribute("admin", request.isUserInRole("ADMIN"));
+			model.addAttribute("name", request.getRemoteUser());
+			
+		} else {
+			model.addAttribute("logged", false);
+		}
 	}
 	
 	@GetMapping("/tienda")
