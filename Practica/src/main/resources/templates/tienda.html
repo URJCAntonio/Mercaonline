@@ -31,12 +31,16 @@
 		<a href="/addProducto">Añadir nuevo producto. </a> 	
 	{{/admin}}
 	
-		
+	{{#logged}}	
 	<br>
 	<a href="/carro">Acceder al carro de compra. </a>
 	<br>
 	<a href="/pedidos">Ver mi historial de pedidos </a>
+	{{/logged}}
 	
+	{{^logged}}
+	<a href="/login">Iniciar sesion</a>
+	{{/logged}}
 	{{#producto}}
 		<div class="Escaparate" tag=" ">
 			<div class= "Producto">

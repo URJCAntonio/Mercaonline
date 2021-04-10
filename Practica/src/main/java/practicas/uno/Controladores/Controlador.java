@@ -6,6 +6,7 @@ import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,19 +42,17 @@ public class Controlador {
 	@Autowired
 	private RepoPedido repositorioPedido;
 	
-	/*
+	
 	@PostConstruct
 	public void init() {
-		Cliente admin = new Cliente("admin","1234", "admin@gmail.com");
-		admin.setCarro(new Carro());
-		repositorioCliente.save(admin);
+		
 		Producto inicial= new Producto(25.50,"Estuche", "Guarda objetos cualquiera en su interior.",
 				"https://cdn.discordapp.com/attachments/752885933401047142/816303859562840114/EK717_95Z_AUTH_UC128126_mMid-scaled.png");
 		inicial.setStock(new Stock(69));
 		repositorioProducto.save(inicial);
 		
 	}
-	*/
+	
 	@ModelAttribute
 	public void addAttributes(Model model, HttpServletRequest request) {
 
@@ -78,9 +77,10 @@ public class Controlador {
 	
 	@RequestMapping("/logout")
 	public String logout() {
-		System.err.println(repositorioCliente.findByNombre("user").get().getNombre());
-		System.err.println(repositorioCliente.findByNombre("user").get().getPassword());
-		return "login";
+		//System.err.println(repositorioCliente.findByNombre("user").get().getNombre());
+		//System.err.println(repositorioCliente.findByNombre("user").get().getPassword());
+	
+		return "index";
 	}
 	
 	@RequestMapping("/failUrl")
@@ -95,5 +95,10 @@ public class Controlador {
 	@GetMapping("/addProducto")
 	public String addProducto() {
 		return "añadir_producto";
+	}
+	
+	@GetMapping("/")
+	public String inicio() {
+		return "index";
 	}
 }

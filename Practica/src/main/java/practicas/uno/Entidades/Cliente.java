@@ -47,6 +47,7 @@ public class Cliente {
 		this.password=password;
 		this.email = email;
 		this.roles = List.of(roles);
+		this.carro= new Carro();
 	}
 	public long getId() {
 		return idCliente;

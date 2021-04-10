@@ -21,10 +21,18 @@
 			<p> Precio: {{miproducto.precio}} €</p>
 			<p> Número de unidades restantes: {{unidades}}</p>
 		<br>
+	{{#logged}}
 	<a href="/producto/addtocarro/{{miproducto.idProducto}}">Añadir producto al carro de compra.</a>
-	<br>
+    {{/logged}}
+    <br>
+    {{#admin}}
 	<a>Eliminar producto</a> 
 	<br>
+	{{/admin}}
+	{{^logged}}
+	<a href="/login">Iniciar sesion</a>
+	<br>
+	{{/logged}}
 	<a href="/tienda">Volver a la tienda. </a>
 	</body>
 	
