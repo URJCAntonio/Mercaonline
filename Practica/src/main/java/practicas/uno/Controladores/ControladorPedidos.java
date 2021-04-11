@@ -60,27 +60,34 @@ public class ControladorPedidos {
 		Carro c= cliente.getCarro();
 		Pedido mipedido= new Pedido(c.getNumProductos(),c.getPrecio(), c.getProductos(), c.getCliente());
 		List<Producto> misproductos= new ArrayList<>(c.getProductos());
-		for (Producto producto : misproductos) {
-			producto.decrementarStock(1);
+		if(misproductos.isEmpty()) {
+			return "pedidos/pedido_vacio";
 		}
-		mipedido.setProductos(misproductos);
-		repositorioPedido.save(mipedido);
-		cliente.getCarro().reiniciar();
-		repositorioCliente.save(cliente);
-		m.addAttribute("mipedido",mipedido);
-		return "pedidos/pedido_realizado";
+		else {
+			for (Producto producto : misproductos) {
+				producto.decrementarStock(1);
+			}
+			mipedido.setProductos(misproductos);
+			repositorioPedido.save(mipedido);
+			cliente.getCarro().reiniciar();
+			repositorioCliente.save(cliente);
+			m.addAttribute("mipedido",mipedido);
+			return "pedidos/pedido_realizado";
+		}
+		
 	}
 	
 	@GetMapping("/pedidos")
-	public String verPedidos(Model m) {
-		List<Pedido> mispedidos= repositorioPedido.findByCliente_IdCliente((long)1);
+	public String verPedidos(Model m, HttpServletRequest request) {
+		//List<Pedido> mispedidos= repositorioPedido.findByCliente_IdCliente((long)1);
+		Cliente cliente= repositorioCliente.findByNombre(request.getRemoteUser()).get();
+		List<Pedido> mispedidos =repositorioPedido.findByCliente_IdCliente(cliente.getId());
 		m.addAttribute("mispedidos", mispedidos);
-		
 		return "pedidos/pedidos";
 	}
 	
 	@GetMapping("/pedido/{idPedido}")
-    public String verPedido(Model m, @PathVariable long idPedido) {
+    public String verPedido(Model m, @PathVariable("idPedido") long idPedido) {
         m.addAttribute("mipedido", repositorioPedido.findById(idPedido).get());
         return "pedidos/pedido";
     }

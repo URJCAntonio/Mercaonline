@@ -37,12 +37,18 @@
 	<br>
 	<a href="/pedidos">Ver mi historial de pedidos </a>
 	<br>
-	<a href="/logout">Cerrar sesión </a>
+	<form action="/logout" method="post">
+    	<button type="submit">Cerrar Sesion</button>
+        <input type="hidden" name="_csrf" value="{{token}}" />
+	</form>
 	{{/logged}}
 	
 	{{^logged}}
 	<br>
-	<a href="/login">Iniciar sesion</a>
+	<form action="/addProducto" method="post">
+    	<button type="submit">Iniciar Sesión</button>
+        <input type="hidden" name="_csrf" value="{{token}}" />
+	</form>
 	{{/logged}}
 	<br>
 	{{#producto}}

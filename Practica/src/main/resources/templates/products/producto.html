@@ -24,7 +24,10 @@
 	{{#logged}}
 	<a href="/producto/addtocarro/{{miproducto.idProducto}}">Añadir producto al carro de compra.</a>
 	<br>
-	<a href="/logout">Cerrar sesión </a>
+	<form action="/logout" method="post">
+    	<button type="submit">Cerrar Sesion</button>
+        <input type="hidden" name="_csrf" value="{{token}}" />
+	</form>
     {{/logged}}
     <br>
     {{#admin}}
@@ -32,7 +35,10 @@
 	<br>
 	{{/admin}}
 	{{^logged}}
-	<a href="/login">Iniciar sesion</a>
+	<form action="/addProducto" method="post">
+    	<button type="submit">Iniciar Sesión</button>
+        <input type="hidden" name="_csrf" value="{{token}}" />
+	</form>
 	<br>
 	{{/logged}}
 	<a href="/tienda">Volver a la tienda. </a>
