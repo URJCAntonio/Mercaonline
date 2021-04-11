@@ -84,11 +84,18 @@ public class ControladorClientes {
 		//Se almacena el cliente correspondiente a la sesión en la variable cliente
 		Cliente cliente= repositorioCliente.findByNombre(request.getRemoteUser()).get();
 		// Se añade al carro del cliente el producto
-		cliente.getCarro().addProducto(repositorioProducto.findById(miproducto).get());
-		// Se almacena en la base de datos el cliente con el carro actualizado
-		repositorioCliente.save(cliente);
-		m.addAttribute("micarro",cliente.getCarro().getProductos());
-		return "carro";
+		Producto prod=repositorioProducto.findById(miproducto).get();
+		if (prod.getStock().getUnidadesPorProducto()==0) {
+			return "products/prod_no_añadido";
+		}
+		else {
+			cliente.getCarro().addProducto(prod);
+			// Se almacena en la base de datos el cliente con el carro actualizado
+			repositorioCliente.save(cliente);
+			m.addAttribute("micarro",cliente.getCarro().getProductos());
+			return "carro";
+		}
+		
 	}
 	
 	@DeleteMapping("/producto/deleteofcarro/{miproducto}")
@@ -100,7 +107,6 @@ public class ControladorClientes {
 			return "products/prodcarro_eliminado";
 		}
 		else return "products/producto_no_encontrado_en_carro";
-		
 		
 	}
 	
