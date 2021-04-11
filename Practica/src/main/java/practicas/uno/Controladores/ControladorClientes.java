@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import practicas.uno.Entidades.Carro;
 import practicas.uno.Entidades.Cliente;
+import practicas.uno.Entidades.Producto;
 import practicas.uno.Repositorios.RepoCliente;
 import practicas.uno.Repositorios.RepoPedido;
 import practicas.uno.Repositorios.RepoProducto;
@@ -89,6 +91,18 @@ public class ControladorClientes {
 		return "carro";
 	}
 	
+	@DeleteMapping("/producto/deleteofcarro/{miproducto}")
+	public String deleteofCarro(Model m, @PathVariable ("miproducto") long idProducto, HttpServletRequest request) {
+		Cliente cliente= repositorioCliente.findByNombre(request.getRemoteUser()).get();
+		Producto miproducto= repositorioProducto.findById(idProducto).get();
+		if(cliente.getCarro().findProducto(miproducto)) {
+			cliente.getCarro().deleteProducto(miproducto);
+			return "products/prodcarro_eliminado";
+		}
+		else return "products/producto_no_encontrado_en_carro";
+		
+		
+	}
 	
 	@GetMapping("/carro")
 	public String goCarro(Model m, HttpServletRequest request) {

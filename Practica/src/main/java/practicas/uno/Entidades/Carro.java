@@ -96,6 +96,9 @@ public class Carro {
 			precio -= producto.getPrecio();
 		}
 	}
+	public boolean findProducto(Producto producto) {
+		return productos.contains(producto);
+	}
 	
 	//Cuando compramos, vaciamos el carro, todo se va a un pedido
 	public void reiniciar() {

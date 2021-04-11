@@ -24,6 +24,8 @@
 	{{#logged}}
 	<a href="/producto/addtocarro/{{miproducto.idProducto}}">Añadir producto al carro de compra.</a>
 	<br>
+	<a href="/producto/deleteofcarro/{{miproducto.idProducto}}">Eliminar producto del carro </a>
+	<br>
 	<form action="/logout" method="post">
     	<button type="submit">Cerrar Sesion</button>
         <input type="hidden" name="_csrf" value="{{token}}" />
