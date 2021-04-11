@@ -9,16 +9,19 @@
 	</head>
 
 	<body>
+		<a href="/">Volver</a>
+		<br>
+		<br>
 		<form action="/registrarse" method="POST">
 		
 			<p> Nombre: </p>
-			<input type="text" name="nombre"/>
+			<input type="text" name="nombre" required/>
 			
 			<p> Email: </p>
-			<input type="email" name="email"/>
+			<input type="email" name="email" required/>
 			
 			<p> Contraseña: </p>
-			<input type="password" name="password"/>
+			<input type="password" name="password" required/>
 			
 			<br>
 			<input type="submit" value="Registrarse"/>

@@ -70,31 +70,27 @@ public class Controlador {
 	
 	@RequestMapping("/login")
 	public String login() {
-		System.err.println(repositorioCliente.findByNombre("user").get().getNombre());
-		System.err.println(repositorioCliente.findByNombre("user").get().getPassword());
-		return "login";
+		return "logs/login";
 	}
 	
 	@RequestMapping("/logout")
 	public String logout() {
-		//System.err.println(repositorioCliente.findByNombre("user").get().getNombre());
-		//System.err.println(repositorioCliente.findByNombre("user").get().getPassword());
-	
+		
 		return "index";
 	}
 	
 	@RequestMapping("/failUrl")
 	public String registrarCliente() {
-		return "failUrl";
+		return "logs/failUrl";
 	}
 	
 	@GetMapping("/registro")
 	public String pagRegistro() {
-		return "registro";
+		return "logs/registro";
 	}
 	@GetMapping("/addProducto")
 	public String addProducto() {
-		return "añadir_producto";
+		return "products/añadir_producto";
 	}
 	
 	@GetMapping("/")

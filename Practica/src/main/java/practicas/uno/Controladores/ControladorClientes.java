@@ -4,7 +4,7 @@ package practicas.uno.Controladores;
 
 import java.security.Principal;
 
-
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,8 +68,13 @@ public class ControladorClientes {
 		
 		micliente.setCarro(new Carro());
 		repositorioCliente.save(micliente);
-		m.addAttribute("producto",repositorioProducto.findAll());
-		return "tienda";
+		try {
+			request.login(nombre, password);
+		} catch (ServletException e) {
+			e.printStackTrace();
+		}
+		//m.addAttribute("producto",repositorioProducto.findAll());
+		return "logs/registrado";
 	}
 	
 	@GetMapping("/producto/addtocarro/{miproducto}")

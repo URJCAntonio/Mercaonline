@@ -63,12 +63,12 @@ public class ControladorProductos {
 	
 	
 	@GetMapping("/producto{idProducto}")
-	public String obtenerProducto(Model m, @PathVariable Long idProducto) {
+	public String obtenerProducto(Model m, @PathVariable("idProducto") Long idProducto) {
 		Producto miproducto= repositorioProducto.findById(idProducto).get();
 
 		m.addAttribute("miproducto",miproducto);
 		m.addAttribute("unidades",miproducto.getStock().getUnidadesPorProducto());
-		return "producto";
+		return "products/producto";
 	}
 	
 	@PostMapping("/producto/add")
@@ -77,14 +77,14 @@ public class ControladorProductos {
 		Producto miproducto = new Producto(precio,nombre,descripcion,url);
 		miproducto.setStock(new Stock(unidades));
 		repositorioProducto.save(miproducto);
-		return "producto_guardado";
+		return "products/producto_guardado";
 	}
 	
 	/*
 	@GetMapping("/producto/{idProducto}/delete")
-	public String deleteProducto(Model m, @PathVariable Long idProducto) {
+	public String deleteProducto(Model m, @PathVariable ("idProducto") Long idProducto) {
 		repositorioProducto.deleteById(idProducto);
-		return "producto_eliminado";
+		return "products/producto_eliminado";
 	}
 	*/
 }

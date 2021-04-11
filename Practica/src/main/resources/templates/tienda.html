@@ -19,7 +19,7 @@
 		</style>
 	</head>
 	<body>
-	<a href="/">volver</a>
+	<a href="/">Volver</a>
 	
 			
 	{{^producto}}
@@ -36,11 +36,15 @@
 	<a href="/carro">Acceder al carro de compra. </a>
 	<br>
 	<a href="/pedidos">Ver mi historial de pedidos </a>
+	<br>
+	<a href="/logout">Cerrar sesión </a>
 	{{/logged}}
 	
 	{{^logged}}
+	<br>
 	<a href="/login">Iniciar sesion</a>
 	{{/logged}}
+	<br>
 	{{#producto}}
 		<div class="Escaparate" tag=" ">
 			<div class= "Producto">

@@ -68,7 +68,7 @@ public class ControladorPedidos {
 		cliente.getCarro().reiniciar();
 		repositorioCliente.save(cliente);
 		m.addAttribute("mipedido",mipedido);
-		return "pedido_realizado";
+		return "pedidos/pedido_realizado";
 	}
 	
 	@GetMapping("/pedidos")
@@ -76,13 +76,13 @@ public class ControladorPedidos {
 		List<Pedido> mispedidos= repositorioPedido.findByCliente_IdCliente((long)1);
 		m.addAttribute("mispedidos", mispedidos);
 		
-		return "pedidos";
+		return "pedidos/pedidos";
 	}
 	
 	@GetMapping("/pedido/{idPedido}")
     public String verPedido(Model m, @PathVariable long idPedido) {
         m.addAttribute("mipedido", repositorioPedido.findById(idPedido).get());
-        return "pedido";
+        return "pedidos/pedido";
     }
     
 }

@@ -9,19 +9,19 @@
 	</head>
 
 	<body>
+		<a href="/">Volver</a>
+		<br>
+		<br>
 		<form action="/login" method="POST">
 		
 			<p> Nombre: </p>
 			<input type="text" name="nombre"/>
 			
-			<p> Email: </p>
-			<input type="email" name="email"/>
-			
 			<p> Contraseña: </p>
 			<input type="password" name="password"/>
 			
 			<br>
-			<input type="submit" value="Registrarse"/>
+			<input type="submit" value="Iniciar Sesion"/>
 			<input type="hidden" name="_csrf" value="{{token}}" />
 		</form>
 		
