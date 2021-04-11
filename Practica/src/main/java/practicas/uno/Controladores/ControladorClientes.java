@@ -75,7 +75,6 @@ public class ControladorClientes {
 		} catch (ServletException e) {
 			e.printStackTrace();
 		}
-		//m.addAttribute("producto",repositorioProducto.findAll());
 		return "logs/registrado";
 	}
 	
@@ -95,15 +94,15 @@ public class ControladorClientes {
 			m.addAttribute("micarro",cliente.getCarro().getProductos());
 			return "carro";
 		}
-		
 	}
 	
-	@DeleteMapping("/producto/deleteofcarro/{miproducto}")
+	@RequestMapping("/producto/deleteofcarro/{miproducto}")
 	public String deleteofCarro(Model m, @PathVariable ("miproducto") long idProducto, HttpServletRequest request) {
 		Cliente cliente= repositorioCliente.findByNombre(request.getRemoteUser()).get();
 		Producto miproducto= repositorioProducto.findById(idProducto).get();
 		if(cliente.getCarro().findProducto(miproducto)) {
 			cliente.getCarro().deleteProducto(miproducto);
+			repositorioCliente.save(cliente);
 			return "products/prodcarro_eliminado";
 		}
 		else return "products/producto_no_encontrado_en_carro";

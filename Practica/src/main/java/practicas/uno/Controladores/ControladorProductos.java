@@ -80,11 +80,10 @@ public class ControladorProductos {
 		return "products/producto_guardado";
 	}
 	
-	/*
-	@GetMapping("/producto/{idProducto}/delete")
+	
+	/*@GetMapping("/producto/{idProducto}/delete")
 	public String deleteProducto(Model m, @PathVariable ("idProducto") Long idProducto) {
 		repositorioProducto.deleteById(idProducto);
 		return "products/producto_eliminado";
-	}
-	*/
+	}*/
 }

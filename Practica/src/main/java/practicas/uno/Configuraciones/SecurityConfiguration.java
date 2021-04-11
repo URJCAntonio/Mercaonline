@@ -48,7 +48,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/logout").permitAll();		//Crear LogOut
 		
 		// Private pages (all other pages)
-		http.authorizeRequests().antMatchers("/home").hasAnyRole("USER");
+		http.authorizeRequests().antMatchers("/producto/deleteofcarro/*").hasAnyRole("USER");
 		http.authorizeRequests().antMatchers("/addProducto").hasAnyRole("ADMIN");
 		http.authorizeRequests().antMatchers("//producto/add").hasAnyRole("ADMIN");
 		

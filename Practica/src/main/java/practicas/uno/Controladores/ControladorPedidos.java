@@ -55,12 +55,15 @@ public class ControladorPedidos {
 	}
 	
 	@GetMapping("/producto/buy")
-	public String realizarPedido(Model m) {
-		Cliente cliente= repositorioCliente.findById((long)1).get();
+	public String realizarPedido(Model m, HttpServletRequest request) {
+		Cliente cliente= repositorioCliente.findByNombre(request.getRemoteUser()).get();
 		Carro c= cliente.getCarro();
 		Pedido mipedido= new Pedido(c.getNumProductos(),c.getPrecio(), c.getProductos(), c.getCliente());
 		List<Producto> misproductos= new ArrayList<>(c.getProductos());
 		if(misproductos.isEmpty()) {
+			for (Producto producto : misproductos) {
+				System.err.println(producto.getNombre());
+			}
 			return "pedidos/pedido_vacio";
 		}
 		else {
@@ -79,7 +82,6 @@ public class ControladorPedidos {
 	
 	@GetMapping("/pedidos")
 	public String verPedidos(Model m, HttpServletRequest request) {
-		//List<Pedido> mispedidos= repositorioPedido.findByCliente_IdCliente((long)1);
 		Cliente cliente= repositorioCliente.findByNombre(request.getRemoteUser()).get();
 		List<Pedido> mispedidos =repositorioPedido.findByCliente_IdCliente(cliente.getId());
 		m.addAttribute("mispedidos", mispedidos);
