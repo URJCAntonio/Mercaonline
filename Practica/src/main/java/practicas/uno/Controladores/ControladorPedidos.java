@@ -82,10 +82,6 @@ public class ControladorPedidos {
 			return "pedidos/stock_insuficiente";
 		}else {
 			
-			for (Producto producto : misproductos) {
-				producto.decrementarStock(1);
-			}
-			
 			//********************************************************************************************
 			//************************************ APLICAR DESCUENTOS ************************************
 			//********************************************************************************************
@@ -128,7 +124,7 @@ public class ControladorPedidos {
 				valor = 1;
 			}
 			
-			if(valor!=0) {
+			if(valor<=0) {
 				codigo = Comunicacion.enviar("generar", valor);
 				m.addAttribute("codigo", "¡Muchas gracias por su compra! Como agradecimiento, le regalamos este vale descuento por valor de "+valor+"€: "+codigo);
 			}
