@@ -28,7 +28,7 @@ public class Producto {
 	@Column
 	private String url;
 	
-	@OneToOne
+	@OneToOne (cascade=CascadeType.ALL)
 	private Stock stock;
 	
 	//@Column

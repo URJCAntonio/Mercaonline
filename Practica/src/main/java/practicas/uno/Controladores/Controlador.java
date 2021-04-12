@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
 import practicas.uno.Entidades.Carro;
 import practicas.uno.Entidades.Cliente;
 import practicas.uno.Entidades.Pedido;
@@ -42,7 +43,7 @@ public class Controlador {
 	@Autowired
 	private RepoPedido repositorioPedido;
 	
-	
+	/*
 	@PostConstruct
 	public void init() {
 		
@@ -51,7 +52,7 @@ public class Controlador {
 		inicial.setStock(new Stock(69));
 		repositorioProducto.save(inicial);
 		
-	}
+	}*/
 	
 	@ModelAttribute
 	public void addAttributes(Model model, HttpServletRequest request) {
@@ -67,23 +68,19 @@ public class Controlador {
 			model.addAttribute("logged", false);
 		}
 	}
-	
 	@RequestMapping("/login")
 	public String login() {
 		return "logs/login";
 	}
-	
 	@RequestMapping("/logout")
 	public String logout() {
 		
 		return "index";
 	}
-	
 	@RequestMapping("/failUrl")
 	public String registrarCliente() {
 		return "logs/failUrl";
 	}
-	
 	@GetMapping("/registro")
 	public String pagRegistro() {
 		return "logs/registro";

@@ -10,14 +10,24 @@
 <body>
 	{{#mipedido}}
 		<p>El pedido ha sido realizado correctamente</p>
-		<br>
 	{{/mipedido}}
+	
 	{{^mipedido}}
 		<p>No tiene productos en su carro de compra </p>
-		<br>
 	{{/mipedido}}
-		<br>
-		<a href= "/tienda">Volver a la tienda </a>
+	
+	{{#descuento}}
+		<p>{{descuento}}</p>
+	{{/descuento}}
+	
+	{{#codigo}}
+		<p>{{codigo}}</p>
+	{{/codigo}}
+	
+	
+	
+	
+	<a href= "/tienda">Volver a la tienda </a>
 
 
 </body>

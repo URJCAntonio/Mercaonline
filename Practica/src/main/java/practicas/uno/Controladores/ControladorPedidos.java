@@ -25,6 +25,7 @@ import practicas.uno.Repositorios.RepoCliente;
 import practicas.uno.Repositorios.RepoPedido;
 import practicas.uno.Repositorios.RepoProducto;
 
+import practicas.uno.Comunicacion.Comunicacion;
 
 
 @Controller
@@ -54,27 +55,71 @@ public class ControladorPedidos {
 		}
 	}
 	
-	@GetMapping("/producto/buy")
-	public String realizarPedido(Model m, HttpServletRequest request) {
+	@PostMapping("/producto/buy")
+	public String realizarPedido(Model m, HttpServletRequest request, @RequestParam int cupon) {
 		Cliente cliente= repositorioCliente.findByNombre(request.getRemoteUser()).get();
 		Carro c= cliente.getCarro();
 		Pedido mipedido= new Pedido(c.getNumProductos(),c.getPrecio(), c.getProductos(), c.getCliente());
 		List<Producto> misproductos= new ArrayList<>(c.getProductos());
 		if(misproductos.isEmpty()) {
-			for (Producto producto : misproductos) {
-				System.err.println(producto.getNombre());
-			}
 			return "pedidos/pedido_vacio";
 		}
 		else {
+			int descuento=0;
 			for (Producto producto : misproductos) {
 				producto.decrementarStock(1);
 			}
+			
+			//********************************************************************************************
+			//************************************ APLICAR DESCUENTOS ************************************
+			//********************************************************************************************
+			if(cupon==0) {
+				System.err.println("cero");
+			}else{
+				descuento = Comunicacion.enviar("usar", cupon);
+				
+				if(descuento==-1) {
+					m.addAttribute("descuento", "Se ha producido un error al tramitar su código de descuento");
+				}else {
+					m.addAttribute("descuento", "Se ha aplicado y consumido su vale descuento por valor de "+descuento+"€ a su compra.");
+				}
+			}
+			//********************************************************************************************
+			//************************************ APLICAR DESCUENTOS ************************************
+			//********************************************************************************************
+			
 			mipedido.setProductos(misproductos);
+			mipedido.setDescuento(descuento);
 			repositorioPedido.save(mipedido);
 			cliente.getCarro().reiniciar();
 			repositorioCliente.save(cliente);
 			m.addAttribute("mipedido",mipedido);
+			
+			//********************************************************************************************
+			//*************************************** GENERAR CUPÓN **************************************
+			//********************************************************************************************
+			double precioFinal = mipedido.getPrecioFinal();
+			int codigo=0;
+			int valor=0; 
+			if(precioFinal>100) {
+				valor = 35;
+			}else if(precioFinal>50) {
+				valor = 15;
+			}else if(precioFinal>20) {
+				valor = 5;
+			}else if(precioFinal>5) {
+				valor = 1;
+			}
+			codigo = Comunicacion.enviar("generar", valor);
+			if(codigo==-1) {
+				m.addAttribute("codigo", "Se ha producido un error al generar su código de descuento");
+			}else if(codigo!=0) {
+				m.addAttribute("codigo", "¡Muchas gracias por su compra! Como agradecimiento, le regalamos este vale descuento por valor de "+valor+"€: "+codigo);
+			}
+			
+			//********************************************************************************************
+			//*************************************** GENERAR CUPÓN **************************************
+			//********************************************************************************************
 			return "pedidos/pedido_realizado";
 		}
 		
