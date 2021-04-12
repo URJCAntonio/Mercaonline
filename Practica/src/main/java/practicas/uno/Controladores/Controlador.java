@@ -27,6 +27,7 @@ import practicas.uno.Entidades.Stock;
 import practicas.uno.Repositorios.RepoCliente;
 import practicas.uno.Repositorios.RepoPedido;
 import practicas.uno.Repositorios.RepoProducto;
+import practicas.unoComunicacion.Comunicacion;
 
 
 
@@ -42,7 +43,7 @@ public class Controlador {
 	@Autowired
 	private RepoPedido repositorioPedido;
 	
-	
+	/*
 	@PostConstruct
 	public void init() {
 		
@@ -51,7 +52,7 @@ public class Controlador {
 		inicial.setStock(new Stock(69));
 		repositorioProducto.save(inicial);
 		
-	}
+	}*/
 	
 	@ModelAttribute
 	public void addAttributes(Model model, HttpServletRequest request) {
@@ -95,6 +96,12 @@ public class Controlador {
 	
 	@GetMapping("/")
 	public String inicio() {
+		return "index";
+	}
+	
+	@GetMapping("/asdf")
+	public String prueba() {
+		Comunicacion.enviar();
 		return "index";
 	}
 }
