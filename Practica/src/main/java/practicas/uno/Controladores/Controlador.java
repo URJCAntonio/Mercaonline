@@ -43,7 +43,7 @@ public class Controlador {
 	@Autowired
 	private RepoPedido repositorioPedido;
 	
-	/*
+	
 	@PostConstruct
 	public void init() {
 		
@@ -52,7 +52,7 @@ public class Controlador {
 		inicial.setStock(new Stock(69));
 		repositorioProducto.save(inicial);
 		
-	}*/
+	}
 	
 	@ModelAttribute
 	public void addAttributes(Model model, HttpServletRequest request) {

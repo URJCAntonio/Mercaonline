@@ -1,5 +1,7 @@
 package practicas.uno.Comunicacion;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -15,25 +17,25 @@ public class Comunicacion {
 		
 		try {
 			Socket socket = new Socket(host,puerto);
-			OutputStream out = socket.getOutputStream();
-			InputStream in = socket.getInputStream();
+			DataInputStream in = new DataInputStream(socket.getInputStream());
+			DataOutputStream out = new DataOutputStream(socket.getOutputStream());
 			
 			
 			// Envío y recepción de información
 			
 			//Especificar usar o generar cupón
 			if(fun=="usar") {
-				out.write(1);
+				out.writeInt(1);
 			}else {
-				out.write(0);
+				out.writeInt(0);
 			}
 			out.flush();
 			
-			out.write(num);
+			out.writeInt(num);
 			out.flush();
 			
-			int cod = in.read();
-			
+			int cod = in.readInt();
+			System.err.println(fun+" espacio "+cod);
 			out.close();
 			in.close();
 			socket.close();

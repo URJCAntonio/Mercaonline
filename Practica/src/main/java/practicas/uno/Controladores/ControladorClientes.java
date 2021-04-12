@@ -84,7 +84,7 @@ public class ControladorClientes {
 		Cliente cliente= repositorioCliente.findByNombre(request.getRemoteUser()).get();
 		// Se añade al carro del cliente el producto
 		Producto prod=repositorioProducto.findById(miproducto).get();
-		if (prod.getStock().getUnidadesPorProducto()==0) {
+		if (prod.getStock().getUnidadesPorProducto()<=0) {
 			return "products/prod_no_añadido";
 		}
 		else {

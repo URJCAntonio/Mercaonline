@@ -61,11 +61,27 @@ public class ControladorPedidos {
 		Carro c= cliente.getCarro();
 		Pedido mipedido= new Pedido(c.getNumProductos(),c.getPrecio(), c.getProductos(), c.getCliente());
 		List<Producto> misproductos= new ArrayList<>(c.getProductos());
+		
+		
+		
 		if(misproductos.isEmpty()) {
 			return "pedidos/pedido_vacio";
 		}
-		else {
-			int descuento=0;
+		boolean suficienteStock = true;
+		
+		for (Producto producto : misproductos) {
+			producto.decrementarStock(1);
+			if (producto.getStock().getUnidadesPorProducto()<=0) {
+				suficienteStock = false;
+			}
+		}
+		if(!suficienteStock) {
+			for (Producto producto : misproductos) {
+				producto.decrementarStock(-1);
+			}
+			return "pedidos/stock_insuficiente";
+		}else {
+			
 			for (Producto producto : misproductos) {
 				producto.decrementarStock(1);
 			}
@@ -73,6 +89,7 @@ public class ControladorPedidos {
 			//********************************************************************************************
 			//************************************ APLICAR DESCUENTOS ************************************
 			//********************************************************************************************
+			int descuento=0;
 			if(cupon==0) {
 				System.err.println("cero");
 			}else{
@@ -110,10 +127,9 @@ public class ControladorPedidos {
 			}else if(precioFinal>5) {
 				valor = 1;
 			}
-			codigo = Comunicacion.enviar("generar", valor);
-			if(codigo==-1) {
-				m.addAttribute("codigo", "Se ha producido un error al generar su código de descuento");
-			}else if(codigo!=0) {
+			
+			if(valor!=0) {
+				codigo = Comunicacion.enviar("generar", valor);
 				m.addAttribute("codigo", "¡Muchas gracias por su compra! Como agradecimiento, le regalamos este vale descuento por valor de "+valor+"€: "+codigo);
 			}
 			

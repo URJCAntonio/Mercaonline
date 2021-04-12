@@ -36,7 +36,7 @@
 		
 		<form method="post" action="/producto/buy/">
 			<p>Si tiene un código de descuento, introduzcalo aquí.</p>
-			<input type="number" min="0" name="cupon">
+			<input type="number" placeholder="0" value="0" min="0" name="cupon" required/>
 			<button type="submit">Comprar productos elegidos</button>
 			<input type="hidden" name="_csrf" value="{{token}}"/>
 		</form>
