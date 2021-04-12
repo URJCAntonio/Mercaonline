@@ -25,12 +25,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder(10, new SecureRandom());
 	}
-	
+
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-
 		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
-		
 	}
 	
 	@Override
@@ -46,9 +44,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/registro").permitAll();
 		http.authorizeRequests().antMatchers("/loginerror").permitAll();	//Crear loginError
 		http.authorizeRequests().antMatchers("/logout").permitAll();		//Crear LogOut
-		
-		http.authorizeRequests().antMatchers("/asdf").permitAll();
-		
 		
 		// Private pages (all other pages)
 		http.authorizeRequests().antMatchers("/producto/deleteofcarro/*").hasAnyRole("USER");
@@ -66,7 +61,4 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.logout().logoutUrl("/logout");
         http.logout().logoutSuccessUrl("/");
 	}
-	
-	
-
 }

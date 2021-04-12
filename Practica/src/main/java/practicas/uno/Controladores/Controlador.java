@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
 import practicas.uno.Entidades.Carro;
 import practicas.uno.Entidades.Cliente;
 import practicas.uno.Entidades.Pedido;
@@ -27,7 +28,6 @@ import practicas.uno.Entidades.Stock;
 import practicas.uno.Repositorios.RepoCliente;
 import practicas.uno.Repositorios.RepoPedido;
 import practicas.uno.Repositorios.RepoProducto;
-import practicas.unoComunicacion.Comunicacion;
 
 
 
@@ -68,23 +68,19 @@ public class Controlador {
 			model.addAttribute("logged", false);
 		}
 	}
-	
 	@RequestMapping("/login")
 	public String login() {
 		return "logs/login";
 	}
-	
 	@RequestMapping("/logout")
 	public String logout() {
 		
 		return "index";
 	}
-	
 	@RequestMapping("/failUrl")
 	public String registrarCliente() {
 		return "logs/failUrl";
 	}
-	
 	@GetMapping("/registro")
 	public String pagRegistro() {
 		return "logs/registro";
@@ -96,12 +92,6 @@ public class Controlador {
 	
 	@GetMapping("/")
 	public String inicio() {
-		return "index";
-	}
-	
-	@GetMapping("/asdf")
-	public String prueba() {
-		Comunicacion.enviar();
 		return "index";
 	}
 }

@@ -25,7 +25,13 @@ public class Pedido {
 	private long numProductos;
 	
 	@Column
-	private double precio;
+	private double precioInicial;
+	
+	@Column
+	private int descuento;
+	
+	@Column
+	private double precioFinal;
 	
 	@ManyToMany(cascade=CascadeType.ALL)
 	private List<Producto> productos;
@@ -37,11 +43,13 @@ public class Pedido {
 		
 	}
 
-	public Pedido(long numProductos, double precio, List<Producto> productos, Cliente cliente ) {
+	public Pedido(long numProductos, double precioInicial, List<Producto> productos, Cliente cliente ) {
 
 		this.numProductos = numProductos;
-		this.precio=precio;
+		this.precioInicial=precioInicial;
 		this.cliente=cliente;
+		this.descuento=0;
+		this.precioFinal=precioInicial;
 	}
 	
 	public long getIdPedido() {
@@ -56,12 +64,28 @@ public class Pedido {
 		this.numProductos = numProductos;
 	}
 
-	public double getPrecio() {
-		return precio;
+	public double getPrecioInicial() {
+		return precioInicial;
 	}
 
-	public void setPrecio(double precio) {
-		this.precio = precio;
+	public void setPrecioInicial(double precioInicial) {
+		this.precioInicial = precioInicial;
+	}
+
+	public int getDescuento() {
+		return descuento;
+	}
+
+	public void setDescuento(int descuento) {
+		this.descuento = descuento;
+		this.precioFinal = this.precioInicial - this.descuento;
+		if(this.precioFinal<0) {
+			this.precioFinal=0;
+		}
+	}
+
+	public double getPrecioFinal() {
+		return precioFinal;
 	}
 
 	public List<Producto> getProductos() {
@@ -75,7 +99,7 @@ public class Pedido {
 	@Override
 	public String toString() {
 		return "Pedido [idPedido=" + idPedido + ", cliente=" + cliente + ", numProductos=" + numProductos + ", precio="
-				+ precio + ", productos=" + productos + "]";
+				+ precioInicial + ", productos=" + productos + "]";
 	}
 	
 	
