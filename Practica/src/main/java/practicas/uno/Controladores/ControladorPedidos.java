@@ -142,7 +142,9 @@ public class ControladorPedidos {
 		Cliente cliente= repositorioCliente.findByNombre(request.getRemoteUser()).get();
 		List<Pedido> mispedidos =repositorioPedido.findByCliente_IdCliente(cliente.getId());
 		m.addAttribute("mispedidos", mispedidos);
+		
 		return "pedidos/pedidos";
+	
 	}
 	
 	@GetMapping("/pedido/{idPedido}")

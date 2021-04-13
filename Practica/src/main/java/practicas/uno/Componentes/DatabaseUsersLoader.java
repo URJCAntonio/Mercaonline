@@ -14,7 +14,7 @@ public class DatabaseUsersLoader {
 	
 	@Autowired
 	private RepoCliente repositorioCliente;
-
+	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 	
@@ -22,6 +22,7 @@ public class DatabaseUsersLoader {
 	private void initDatabase() {
 		repositorioCliente.save(new Cliente("user", passwordEncoder.encode("pass"), "user@mail.net", "USER"));
 		repositorioCliente.save(new Cliente("admin", passwordEncoder.encode("adminpass"), "admin@mail.net", "USER", "ADMIN"));
+		
 	}
 	
 }
