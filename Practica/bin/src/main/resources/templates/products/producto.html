@@ -1,0 +1,51 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<style>
+			
+			img{
+				width: 350px;
+   				height: 350px;
+			}
+			
+			body{
+				background: lightcyan;
+			}
+	
+		</style>
+	</head>
+	<body>
+			<h1> {{miproducto.nombre}} </h1>
+			<img src={{miproducto.url}}>
+			<p> {{miproducto.descripcion}} </p>
+			<p> Precio: {{miproducto.precio}} €</p>
+			<p> Número de unidades restantes: {{unidades}}</p>
+		<br>
+	{{#logged}}
+	<a href="/producto/addtocarro/{{miproducto.idProducto}}">Añadir producto al carro de compra.</a>
+	<br>
+	<a href="/producto/deleteofcarro/{{miproducto.idProducto}}">Eliminar producto del carro </a>
+	<br>
+	<form action="/logout" method="post">
+    	<button type="submit">Cerrar Sesion</button>
+        <input type="hidden" name="_csrf" value="{{token}}" />
+	</form>
+    {{/logged}}
+    <br>
+    {{#admin}}
+    <!--
+	<a href="/producto/{{miproducto.idProducto}}/delete">Eliminar producto de la tienda</a>
+	--> 
+	<br>
+	{{/admin}}
+	{{^logged}}
+	<form action="/addProducto" method="post">
+    	<button type="submit">Iniciar Sesión</button>
+        <input type="hidden" name="_csrf" value="{{token}}" />
+	</form>
+	<br>
+	{{/logged}}
+	<a href="/tienda">Volver a la tienda. </a>
+	</body>
+	
+</html>

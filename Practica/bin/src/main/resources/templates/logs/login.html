@@ -1,0 +1,55 @@
+<html>
+	<head>
+	<meta charset="UTF-8"/>
+	<style>
+	body{
+		background: lightcyan;
+	}
+	</style>
+	</head>
+
+	<body>
+		<a href="/">Volver</a>
+		<br>
+		<br>
+		<form action="/login" method="POST">
+		
+			<p> Nombre: </p>
+			<input type="text" name="nombre"/>
+			
+			<p> Contraseña: </p>
+			<input type="password" name="password"/>
+			
+			<br>
+			<input type="submit" value="Iniciar Sesion"/>
+			<input type="hidden" name="_csrf" value="{{token}}" />
+		</form>
+		
+			<p>logged:</p>
+		{{#logged}}
+			<p>{{logged}}</p>
+		{{/logged}}
+		{{^logged}}
+			<p>NA</p>
+		{{/logged}}
+		
+		<p>name:</p>
+		{{#name}}
+			<p>{{name}}</p>
+		{{/name}}
+		{{^name}}
+			<p>NA</p>
+		{{/name}}
+		
+			<p>admin:</p>
+		{{#admin}}
+			<p>{{admin}}</p>
+		{{/admin}}
+		{{^admin}}
+			<p>NA</p>
+		{{/admin}}
+		
+	</body>
+	
+	
+</html>

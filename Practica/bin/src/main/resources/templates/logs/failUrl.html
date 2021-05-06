@@ -1,0 +1,52 @@
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<style>
+	body{
+		background: lightcyan;
+	}
+	</style>
+</head>
+<body>
+		<p>Parece que estás intentando entrar en una página a la que no tienes acceso. Conectate para acceder.</p>
+		<br>
+		<br>
+		<a href= "/">Volver a la página principal </a>
+		<br>
+		<a href= "/login">Conectarse</a>
+		
+
+	
+			<p>logged:</p>
+		{{#logged}}
+			<p>{{logged}}</p>
+		{{/logged}}
+		{{^logged}}
+			<p>NA</p>
+		{{/logged}}
+		
+			<p>userName:</p>
+		{{#userName}}
+			<p>{{userName}}</p>
+		{{/userName}}
+		{{^userName}}
+			<p>NA</p>
+		{{/userName}}
+		
+			<p>admin:</p>
+		{{#admin}}
+			<p>{{admin}}</p>
+		{{/admin}}
+		{{^admin}}
+			<p>NA</p>
+		{{/admin}}
+		
+			<p>hola:</p>
+		{{#hola}}
+			<p>{{hola}}</p>
+		{{/hola}}
+		{{^hola}}
+			<p>NA</p>
+		{{/hola}}
+</body>
+</html>
