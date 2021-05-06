@@ -61,3 +61,6 @@
   <img src="https://cdn.discordapp.com/attachments/522438377165815808/818084046097612820/modelo_entidad_relacion.PNG">
 <h2> Diagrama UML </h2>
 <img src="https://cdn.discordapp.com/attachments/522438377165815808/818827672623906855/UML.PNG">
+<h1>Fase 3</h1>
+<h2> Instrucciones para crear jar</h2>
+<p> Cuando se descargue el proyecto, hacer clic derecho en el proyecto, ir a Run As y dentro a "Maven Build...". En los goals, metemos "package" y aplicamos los cambios. Con esto, se generará una carpeta llamada target que contendrá el jar de nuestra aplicación. Esto se tiene que hacer tanto con la aplicación del servicio web como la aplicación con el servicio interno.</p>
