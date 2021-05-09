@@ -1,5 +1,6 @@
 package practicas.uno.Entidades;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -13,7 +14,7 @@ import javax.persistence.OneToOne;
 
 
 @Entity
-public class Stock {
+public class Stock implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

@@ -1,5 +1,6 @@
 package practicas.uno.Entidades;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -12,7 +13,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Pedido {
+public class Pedido implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

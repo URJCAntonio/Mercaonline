@@ -1,5 +1,6 @@
 package practicas.uno.Entidades;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -15,7 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Carro {
+public class Carro implements Serializable{
 
 	
 	@Id

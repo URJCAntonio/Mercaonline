@@ -62,7 +62,7 @@ public class ControladorProductos {
 		return "products/producto";
 	}
 	
-	@CacheEvict(allEntries = true)
+	
 	@PostMapping("/producto/add")
 	public String addProducto(Model m, @RequestParam String nombre, @RequestParam String descripcion, @RequestParam String url,
 			@RequestParam Double precio, @RequestParam Long unidades) {
