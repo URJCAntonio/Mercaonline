@@ -20,25 +20,22 @@ import practicas.uno.Entidades.Carro;
 import practicas.uno.Entidades.Cliente;
 import practicas.uno.Entidades.Pedido;
 import practicas.uno.Entidades.Producto;
-import practicas.uno.Entidades.Stock;
 import practicas.uno.Repositorios.RepoCliente;
 import practicas.uno.Repositorios.RepoPedido;
-import practicas.uno.Repositorios.RepoProducto;
 
 import practicas.uno.Comunicacion.Comunicacion;
 
 
 @Controller
 public class ControladorPedidos {
-
-	@Autowired
-	private RepoProducto repositorioProducto; 
 	
 	@Autowired
 	private RepoCliente repositorioCliente;
 	
 	@Autowired
 	private RepoPedido repositorioPedido;
+	
+	
 	
 	@ModelAttribute
 	public void addAttributes(Model model, HttpServletRequest request) {
@@ -153,4 +150,5 @@ public class ControladorPedidos {
         return "pedidos/pedido";
     }
     
+	
 }

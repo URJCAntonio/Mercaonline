@@ -11,12 +11,14 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 import org.springframework.boot.SpringApplication;
-
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import practicas.uno.PracticaApplication;
 
+
+@SpringBootApplication
 public class main {
 	
-	
+
 	public static void main(String []args) {
 		SpringApplication.run(PracticaApplication.class, args);
 		HashMap<Integer,Cupon> cupones = new HashMap<>();
@@ -76,6 +78,7 @@ public class main {
 		}
 		
 	}
+	
 }
 
 

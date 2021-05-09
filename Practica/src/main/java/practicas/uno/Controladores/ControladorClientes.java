@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,7 +22,7 @@ import practicas.uno.Entidades.Carro;
 import practicas.uno.Entidades.Cliente;
 import practicas.uno.Entidades.Producto;
 import practicas.uno.Repositorios.RepoCliente;
-import practicas.uno.Repositorios.RepoPedido;
+
 import practicas.uno.Repositorios.RepoProducto;
 
 
@@ -35,9 +35,6 @@ public class ControladorClientes {
 	
 	@Autowired
 	private RepoCliente repositorioCliente;
-	
-	@Autowired
-	private RepoPedido repositorioPedido;
 	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
