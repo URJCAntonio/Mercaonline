@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -61,7 +62,6 @@ public class ControladorProductos {
 		m.addAttribute("unidades",miproducto.getStock().getUnidadesPorProducto());
 		return "products/producto";
 	}
-	
 	
 	@PostMapping("/producto/add")
 	public String addProducto(Model m, @RequestParam String nombre, @RequestParam String descripcion, @RequestParam String url,

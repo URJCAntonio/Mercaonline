@@ -9,6 +9,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +24,7 @@ import practicas.uno.Entidades.Pedido;
 import practicas.uno.Entidades.Producto;
 import practicas.uno.Repositorios.RepoCliente;
 import practicas.uno.Repositorios.RepoPedido;
-
+import practicas.uno.Repositorios.RepoProducto;
 import practicas.uno.Comunicacion.Comunicacion;
 
 
@@ -35,7 +37,8 @@ public class ControladorPedidos {
 	@Autowired
 	private RepoPedido repositorioPedido;
 	
-	
+	@Autowired
+	private RepoProducto repositorioProducto;
 	
 	@ModelAttribute
 	public void addAttributes(Model model, HttpServletRequest request) {
@@ -58,7 +61,6 @@ public class ControladorPedidos {
 		Carro c= cliente.getCarro();
 		Pedido mipedido= new Pedido(c.getNumProductos(),c.getPrecio(), c.getProductos(), c.getCliente());
 		List<Producto> misproductos= new ArrayList<>(c.getProductos());
-		
 		
 		
 		if(misproductos.isEmpty()) {

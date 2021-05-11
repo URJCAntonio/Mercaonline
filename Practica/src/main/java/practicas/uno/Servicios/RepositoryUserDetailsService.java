@@ -23,6 +23,7 @@ public class RepositoryUserDetailsService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String nombre) throws UsernameNotFoundException {
 
+		//Crea la key de clientes en la cache cuando se hace login
 		Cliente cliente = repositorioCliente.findByNombre(nombre).orElseThrow(() -> new UsernameNotFoundException("User not found"));
 		List<GrantedAuthority> roles = new ArrayList<>();
 		for (String role : cliente.getRoles()) {

@@ -8,6 +8,7 @@ import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -52,15 +53,19 @@ public class Controlador {
 			model.addAttribute("logged", false);
 		}
 	}
+	
+
 	@RequestMapping("/login")
 	public String login() {
 		return "logs/login";
 	}
-	@RequestMapping("/logout")
+	
+	@CacheEvict(value={"pedidos","clientes"},allEntries=true)
+	@RequestMapping("/logmeout")
 	public String logout() {
-		
 		return "index";
 	}
+	
 	@RequestMapping("/failUrl")
 	public String registrarCliente() {
 		return "logs/failUrl";
