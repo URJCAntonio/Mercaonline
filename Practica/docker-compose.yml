@@ -1,6 +1,71 @@
-web:
-  build: .
-  ports:
-    - "8443:8443"
-  volumes:
-    - 
+#web:
+ # build: .
+  #ports:
+   # - "8443:8443"
+  #volumes:
+   # -
+      
+version: '3.7'
+
+services:
+  mysql:
+    container_name: mysql
+    image: mysql:8.0.19
+    environment:
+      MYSQL_ROOT_PASSWORD: '1234'
+      MYSQL_DATABASE: 'mercaonline'
+      MYSQL_USER: 'root'
+      MYSQL_PASSWORD: '1234'
+    ports:
+      - 3306:3306
+
+  redis:
+    container_name: redis
+    image: 'redis:latest'
+    command: redis-server --requirepass password
+    ports:
+      - '6379:6379'
+
+  haproxy-web: 
+    container_name: haproxy-web
+    image: 'haproxy:2.1'
+    ports:
+      - '81:80'
+      - '443:443'
+      - '8404:8404'
+    volumes:
+      - ./volumes/haproxy-web:/usr/local/etc/haproxy:ro
+    depends_on:
+      - mercaonline-web-1
+      - mercaonline-web-2
+
+  mercaonline-web-1:
+    ports:
+      - "8443:8443"
+    container_name: mercaonline-web-1 
+    image: 'mercaonline-web:v1'
+    depends_on:
+       - mysql
+       - redis
+  mercaonline-web-2:
+    ports:
+      - "8080:8080"
+    container_name: mercaonline-web-2
+    image: 'mercaonline-web:v1'
+    depends_on:
+      - mysql
+      - redis
+
+  mercaonline-SI-1:
+     container_name: mercaonline-SI-1
+     image: 'mercaonline-servinterno:v1'
+     depends_on:
+       - mysql
+
+     
+     
+     
+     
+     
+     
+     

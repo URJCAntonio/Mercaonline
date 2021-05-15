@@ -1,4 +1,4 @@
-package practicas.uno.ServicioInterno;
+package org.springframework.boot.auxiliar;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -12,6 +12,7 @@ import java.util.HashSet;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 import practicas.uno.PracticaApplication;
 
 

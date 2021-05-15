@@ -1,4 +1,4 @@
-package practicas.uno.ServicioInterno;
+package org.springframework.boot.auxiliar;
 
 public class Cupon {
 	public int codigo;

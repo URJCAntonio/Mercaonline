@@ -16,8 +16,6 @@ import org.springframework.context.annotation.Bean;
 
 import com.sun.tools.sjavac.Log;
 
-import practicas.uno.ServicioInterno.Cupon;
-
 @EnableCaching
 @SpringBootApplication
 public class PracticaApplication {
