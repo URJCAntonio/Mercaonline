@@ -18,11 +18,11 @@ public class DatabaseUsersLoader {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 	
-	@PostConstruct
+	/*@PostConstruct
 	private void initDatabase() {
 		repositorioCliente.save(new Cliente("user", passwordEncoder.encode("pass"), "user@mail.net", "USER"));
 		repositorioCliente.save(new Cliente("admin", passwordEncoder.encode("adminpass"), "admin@mail.net", "USER", "ADMIN"));
 		
-	}
+	}*/
 	
 }

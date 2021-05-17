@@ -29,7 +29,7 @@ public class Controlador {
 	private RepoProducto repositorioProducto; 
 	
 	
-	@PostConstruct
+	/*@PostConstruct
 	public void init() {
 		
 		Producto inicial= new Producto(25.50,"Estuche", "Guarda objetos cualquiera en su interior.",
@@ -37,7 +37,7 @@ public class Controlador {
 		inicial.setStock(new Stock(69));
 		repositorioProducto.save(inicial);
 		
-	}
+	}*/
 	
 	@ModelAttribute
 	public void addAttributes(Model model, HttpServletRequest request) {
