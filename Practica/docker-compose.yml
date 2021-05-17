@@ -38,7 +38,7 @@ services:
     ports:
       - "8443:8443"
     container_name: mercaonline-web-1 
-    image: 'mercaonline-web:v2'
+    image: 'mercaonline-web:v3'
     depends_on:
        - mysql
        - redis
@@ -46,7 +46,7 @@ services:
     ports:
       - "8080:8443"
     container_name: mercaonline-web-2
-    image: 'mercaonline-web:v2'
+    image: 'mercaonline-web:v3'
     depends_on:
       - mysql
       - redis
@@ -54,10 +54,11 @@ services:
      ports:
       - "9999:9999"
      container_name: mercaonline-SI-1
-     image: 'mercaonline-servinterno:v3'
+     image: 'mercaonline-servinterno:v2'
      depends_on:
       - mercaonline-web-1
       - mercaonline-web-2
+      
   haproxy-SI:
     container_name: haproxy-SI
     image: 'haproxy:2.1'

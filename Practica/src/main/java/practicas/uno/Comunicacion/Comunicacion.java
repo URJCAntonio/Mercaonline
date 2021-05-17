@@ -12,7 +12,7 @@ public class Comunicacion {
 	
 	public static int enviar(String fun, int num) {
 		System.err.println("enviar");
-		String host = "127.0.0.1";
+		String host = "mercaonline-SI-1";
 		int puerto = 9999;
 		
 		try {
