@@ -72,3 +72,8 @@
 <h2> Diagrama de clases y templates</h2>
 <p>El diagrama no ha cambiado desde la fase anterior, ya que solo se añadieron "cabeceras" para las cachés a los métodos ya existentes</p>
 <img src="https://cdn.discordapp.com/attachments/522438377165815808/818827672623906855/UML.PNG">
+<h2> Funciones adicionales</h2>
+<ol type=”A”>
+  <li>Uso de Redis como caché en lugar de la caché interna de Spring</li>
+  <li>Uso de docker-compose para arrancar la aplicación completa con todos los servicios</li>
+</ol>
