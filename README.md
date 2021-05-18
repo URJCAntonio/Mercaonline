@@ -64,3 +64,13 @@
 <h1>Fase 3</h1>
 <h2> Instrucciones para crear jar</h2>
 <p> Cuando se descargue el proyecto, hacer clic derecho en el proyecto, ir a Run As y dentro a "Maven Build...". En los goals, metemos "package" y aplicamos los cambios. Con esto, se generará una carpeta llamada target que contendrá el jar de nuestra aplicación. Esto se tiene que hacer tanto con la aplicación del servicio web como la aplicación con el servicio interno.</p>
+<h1>Fase 4</h1>
+<h2> Vídeo App</h2>
+<p>https://www.youtube.com/watch?v=h2-3e5Gj8uk</p>
+<h2> Documentación del servicio interno</h2>
+<p>El servicio interno es una aplicación java que genera y reconoce cupones. Cuando un cliente realiza una compra, la web lo notifica al servicio interno. Si en la compra se ha intentado utilizar un código de descuento, el servicio interno comprueba que el código corresponda con algún código y se le notifica la respuesta a la web. Además, siempre que se realiza una compra la web avisa al servicio interno, que genera un código de descuento y se lo devuelve a la web. Las aplicaciones se comunican entre ellas mediante mensajes a través de sockets.</p>
+<h2> Documentación del servicio interno</h2>
+<p>El servicio interno es una aplicación java que genera y reconoce cupones. Cuando un cliente realiza una compra, la web lo notifica al servicio interno. Si en la compra se ha intentado utilizar un código de descuento, el servicio interno comprueba que el código corresponda con algún código y se le notifica la respuesta a la web. Además, siempre que se realiza una compra la web avisa al servicio interno, que genera un código de descuento y se lo devuelve a la web. Las aplicaciones se comunican entre ellas mediante mensajes a través de sockets.</p>
+<h2> Diagrama de clases y templates</h2>
+<p>El diagrama no ha cambiado desde la fase anterior, ya que solo se añadieron "cabeceras" para las cachés a los métodos ya existentes</p>
+<img src="https://cdn.discordapp.com/attachments/522438377165815808/818827672623906855/UML.PNG">
